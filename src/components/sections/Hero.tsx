@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 export default function Hero() {
   return (
     <>
@@ -214,19 +216,16 @@ export default function Hero() {
             minHeight: '400px',
           }}
         >
-          <img
-            src="/photo.jpg"
+          <Image
+            src="/photo.png"
             alt="Pranav Nair"
+            fill
+            priority
+            sizes="(max-width: 860px) 100vw, 50vw"
             style={{
-              width: '100%',
-              height: '100%',
               objectFit: 'cover',
               objectPosition: 'center top',
               filter: 'grayscale(15%) contrast(1.08)',
-              display: 'block',
-            }}
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).style.display = 'none';
             }}
           />
 

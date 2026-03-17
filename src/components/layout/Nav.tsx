@@ -136,7 +136,7 @@ export default function Nav() {
             alt="Pranav Nair"
             width={48}
             height={48}
-            style={{ objectFit: 'contain', height: '38px', width: 'auto' }}
+            style={{ objectFit: 'contain', height: '38px', width: 'auto', filter: 'brightness(0) invert(1)' }}
             priority
           />
         </Link>
