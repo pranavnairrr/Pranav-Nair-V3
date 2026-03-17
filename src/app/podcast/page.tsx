@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import VideoFeature from '@/components/sections/VideoFeature';
+import LiteYouTube from '@/components/ui/LiteYouTube';
 import { podcastVideos } from '@/lib/podcastVideos';
 
 export const metadata: Metadata = {
@@ -107,14 +108,8 @@ export default function PodcastPage() {
           }}
         >
           {podcastVideos.map((v) => (
-            <div key={v.id} style={{ background: 'var(--black)', position: 'relative', paddingBottom: '56.25%' }}>
-              <iframe
-                src={`https://www.youtube.com/embed/${v.id}`}
-                title={v.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', display: 'block' }}
-              />
+            <div key={v.id} style={{ background: 'var(--black)' }}>
+              <LiteYouTube id={v.id} title={v.title} />
             </div>
           ))}
         </div>

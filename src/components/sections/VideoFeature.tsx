@@ -1,6 +1,7 @@
 'use client';
 
 import RevealWrapper from '@/components/ui/RevealWrapper';
+import LiteYouTube from '@/components/ui/LiteYouTube';
 import { podcastVideos } from '@/lib/podcastVideos';
 
 export { podcastVideos };
@@ -9,48 +10,9 @@ interface VideoFeatureProps {
   compact?: boolean;
 }
 
-function EmbedBox({ id, title }: { id: string; title: string }) {
-  return (
-    <div
-      style={{
-        position: 'relative',
-        paddingBottom: '56.25%',
-        background: 'var(--grey)',
-        overflow: 'hidden',
-        border: '1px solid var(--grey)',
-      }}
-    >
-      <iframe
-        src={`https://www.youtube.com/embed/${id}`}
-        title={title}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          border: 'none',
-          display: 'block',
-        }}
-      />
-    </div>
-  );
-}
-
 export default function VideoFeature({ compact = false }: VideoFeatureProps) {
   if (compact) {
-    return (
-      <div style={{ position: 'relative', width: '100%', paddingBottom: '56.25%', background: '#000' }}>
-        <iframe
-          src={`https://www.youtube.com/embed/${podcastVideos[0].id}`}
-          title={podcastVideos[0].title}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', display: 'block' }}
-        />
-      </div>
-    );
+    return <LiteYouTube id={podcastVideos[0].id} title={podcastVideos[0].title} />;
   }
 
   return (
@@ -126,7 +88,7 @@ export default function VideoFeature({ compact = false }: VideoFeatureProps) {
         <div className="video-grid-2x2">
           {podcastVideos.map((v) => (
             <div key={v.id}>
-              <EmbedBox id={v.id} title={v.title} />
+              <LiteYouTube id={v.id} title={v.title} />
             </div>
           ))}
         </div>
