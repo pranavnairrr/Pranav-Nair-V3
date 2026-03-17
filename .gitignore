@@ -4,6 +4,7 @@ node_modules/
 # Next.js build output
 .next/
 out/
+public/_next/
 
 # Environment files — NEVER commit these
 .env
