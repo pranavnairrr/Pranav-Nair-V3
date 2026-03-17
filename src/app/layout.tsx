@@ -43,12 +43,21 @@ export default function RootLayout({
     '@type': 'Person',
     name: 'Pranav Nair',
     jobTitle: 'AI-Powered Marketing Strategist',
+    description: 'Dubai-based AI-Powered Marketing Strategist helping healthcare and luxury brands grow through brand strategy, content, and AI workflows.',
     url: 'https://pranavnair.co',
+    image: 'https://pranavnair.co/photo.png',
+    email: 'ppranav18@gmail.com',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Dubai',
+      addressCountry: 'AE',
+    },
     sameAs: [
-      'https://linkedin.com/in/pranavnairrr',
-      'https://instagram.com/ps.ooo7',
-      'https://x.com/PranavNair__',
-      'https://youtube.com/@pranavnairrrrr',
+      'https://www.linkedin.com/in/pranavnairrr',
+      'https://www.instagram.com/ps.ooo7',
+      'https://www.x.com/PranavNair__',
+      'https://twitter.com/PranavNair__',
+      'https://www.youtube.com/@PranavNairrrrr',
     ],
   };
 
