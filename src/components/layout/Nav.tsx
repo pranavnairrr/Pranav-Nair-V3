@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
@@ -129,17 +130,15 @@ export default function Nav() {
           transition: 'background 0.3s',
         }}
       >
-        <Link
-          href="/"
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: '22px',
-            letterSpacing: '4px',
-            color: 'var(--white)',
-            textDecoration: 'none',
-          }}
-        >
-          PN
+        <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+          <Image
+            src="/logo.png"
+            alt="Pranav Nair"
+            width={48}
+            height={48}
+            style={{ objectFit: 'contain', height: '38px', width: 'auto' }}
+            priority
+          />
         </Link>
 
         {/* Desktop Links */}
