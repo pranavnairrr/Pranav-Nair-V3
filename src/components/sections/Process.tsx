@@ -26,86 +26,117 @@ const steps = [
 
 export default function Process() {
   return (
-    <section
-      id="process"
-      style={{
-        padding: '96px var(--pad)',
-        borderBottom: '1px solid var(--grey)',
-      }}
-    >
-      <RevealWrapper>
-        <SectionLabel>How I Work</SectionLabel>
-        <h2 className="sec-title" style={{ marginBottom: '52px' }}>
-          THE PROCESS
-        </h2>
-      </RevealWrapper>
+    <>
+      <style>{`
+        .process-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1px;
+          background: var(--grey);
+          border: 1px solid var(--grey);
+        }
+        .process-step {
+          background: var(--black);
+          padding: 40px 32px;
+          position: relative;
+          overflow: hidden;
+          transition: background 0.25s;
+          cursor: default;
+        }
+        .process-step::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: var(--orange);
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.35s ease;
+        }
+        .process-step:hover::after {
+          transform: scaleX(1);
+        }
+        .process-step:hover {
+          background: #0e0e0e !important;
+        }
+        .process-ghost {
+          position: absolute;
+          top: 16px;
+          right: 20px;
+          font-family: var(--font-display);
+          font-size: 56px;
+          color: rgba(255,77,0,0.10);
+          line-height: 1;
+          pointer-events: none;
+          user-select: none;
+          transition: color 0.3s;
+        }
+        .process-step:hover .process-ghost {
+          color: rgba(255,77,0,0.18);
+        }
+        @media (max-width: 860px) {
+          .process-grid {
+            grid-template-columns: 1fr 1fr !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .process-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
 
-      <RevealWrapper delay={0.15}>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '1px',
-            background: 'var(--grey)',
-            border: '1px solid var(--grey)',
-          }}
-        >
-          {steps.map((step) => (
-            <div
-              key={step.num}
-              style={{
-                background: 'var(--black)',
-                padding: '40px 32px',
-                position: 'relative',
-                overflow: 'hidden',
-              }}
-            >
-              {/* Ghost Number */}
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '16px',
-                  right: '20px',
-                  fontFamily: 'var(--font-display)',
-                  fontSize: '56px',
-                  color: 'rgba(255,77,0,0.10)',
-                  lineHeight: 1,
-                  pointerEvents: 'none',
-                  userSelect: 'none',
-                }}
-              >
-                {step.num}
+      <section
+        id="process"
+        style={{
+          padding: '80px var(--pad)',
+          borderBottom: '1px solid var(--grey)',
+        }}
+      >
+        <RevealWrapper>
+          <SectionLabel>How I Work</SectionLabel>
+          <h2 className="sec-title" style={{ marginBottom: '48px' }}>
+            THE PROCESS
+          </h2>
+        </RevealWrapper>
+
+        <RevealWrapper delay={0.15}>
+          <div className="process-grid">
+            {steps.map((step) => (
+              <div key={step.num} className="process-step">
+                <div className="process-ghost">{step.num}</div>
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    letterSpacing: '0.5px',
+                    color: 'var(--white)',
+                    marginBottom: '14px',
+                    marginTop: '12px',
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {step.title}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '12px',
+                    fontWeight: 300,
+                    lineHeight: 1.75,
+                    color: 'rgba(245,240,232,0.38)',
+                  }}
+                >
+                  {step.desc}
+                </p>
               </div>
-
-              <h3
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '14px',
-                  fontWeight: 500,
-                  letterSpacing: '0.5px',
-                  color: 'var(--white)',
-                  marginBottom: '14px',
-                  marginTop: '12px',
-                  lineHeight: 1.4,
-                }}
-              >
-                {step.title}
-              </h3>
-              <p
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '12px',
-                  fontWeight: 300,
-                  lineHeight: 1.75,
-                  color: 'rgba(245,240,232,0.38)',
-                }}
-              >
-                {step.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </RevealWrapper>
-    </section>
+            ))}
+          </div>
+        </RevealWrapper>
+      </section>
+    </>
   );
 }

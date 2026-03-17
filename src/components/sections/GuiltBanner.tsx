@@ -40,24 +40,28 @@ export default function GuiltBanner() {
           animation-delay: 0.5s;
         }
 
-        @media (max-width: 768px) {
+        .guilt-banner-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          border-bottom: 1px solid var(--grey);
+        }
+
+        @media (max-width: 640px) {
           .guilt-banner-grid {
             grid-template-columns: 1fr !important;
           }
-          .guilt-left, .guilt-right {
-            padding: 48px var(--pad) !important;
+          .guilt-left {
+            padding: 44px var(--pad) !important;
+          }
+          .guilt-right {
+            padding: 44px var(--pad) !important;
+            border-left: none !important;
+            border-top: 1px solid var(--grey);
           }
         }
       `}</style>
 
-      <section
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          borderBottom: '1px solid var(--grey)',
-        }}
-        className="guilt-banner-grid"
-      >
+      <section className="guilt-banner-grid">
         {/* Left Panel — Orange */}
         <div
           className="guilt-left"

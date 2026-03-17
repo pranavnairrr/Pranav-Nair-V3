@@ -9,13 +9,12 @@ export default function Portfolio() {
         .port-card {
           position: relative;
           overflow: hidden;
+          transition: background 0.25s;
         }
         .port-card::before {
           content: '';
           position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
+          top: 0; left: 0; right: 0;
           height: 3px;
           background: var(--orange);
           transform: scaleX(0);
@@ -28,12 +27,24 @@ export default function Portfolio() {
         .port-card:hover {
           background: #0d0d0d !important;
         }
+        .port-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1px;
+          background: var(--grey);
+          border: 1px solid var(--grey);
+        }
+        @media (max-width: 640px) {
+          .port-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
       `}</style>
 
       <section
         id="portfolio"
         style={{
-          padding: '96px var(--pad)',
+          padding: '80px var(--pad)',
           borderBottom: '1px solid var(--grey)',
         }}
       >
@@ -50,7 +61,7 @@ export default function Portfolio() {
             style={{
               borderLeft: '3px solid var(--orange)',
               paddingLeft: '20px',
-              marginBottom: '56px',
+              marginBottom: '48px',
               marginTop: '28px',
             }}
           >
@@ -73,15 +84,7 @@ export default function Portfolio() {
 
         {/* Portfolio Cards Grid */}
         <RevealWrapper delay={0.2}>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '1px',
-              background: 'var(--grey)',
-              border: '1px solid var(--grey)',
-            }}
-          >
+          <div className="port-grid">
             {portfolioItems.map((item) => (
               <a
                 key={item.id}
@@ -91,17 +94,16 @@ export default function Portfolio() {
                 className="port-card"
                 style={{
                   background: 'var(--black)',
-                  padding: '52px 44px',
+                  padding: 'clamp(32px, 4vw, 52px) clamp(24px, 3.5vw, 44px)',
                   textDecoration: 'none',
                   display: 'block',
-                  transition: 'background 0.2s',
                 }}
               >
                 {/* Ghost Platform */}
                 <div
                   style={{
                     fontFamily: 'var(--font-display)',
-                    fontSize: 'clamp(52px, 6vw, 80px)',
+                    fontSize: 'clamp(48px, 6vw, 80px)',
                     color: 'rgba(245,240,232,0.03)',
                     lineHeight: 1,
                     marginBottom: '-16px',
@@ -133,7 +135,7 @@ export default function Portfolio() {
                 <h3
                   style={{
                     fontFamily: 'var(--font-display)',
-                    fontSize: 'clamp(38px, 4vw, 58px)',
+                    fontSize: 'clamp(32px, 4vw, 58px)',
                     lineHeight: 0.92,
                     color: 'var(--white)',
                     marginBottom: '18px',

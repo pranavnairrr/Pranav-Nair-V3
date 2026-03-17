@@ -36,7 +36,7 @@ export default function Hero() {
         }
         .hero-img-wrap {
           opacity: 0;
-          animation: fadeIn 1.2s ease forwards;
+          animation: scaleIn 1.1s ease forwards;
           animation-delay: 0.3s;
         }
         .avail-dot {
@@ -47,13 +47,43 @@ export default function Hero() {
           animation: blink 2s ease-in-out infinite;
           flex-shrink: 0;
         }
-        @media (max-width: 900px) {
+        .hero-badge {
+          animation: float 4s ease-in-out infinite;
+          animation-delay: 1.5s;
+        }
+        .hero-img-wrap img {
+          transition: transform 0.6s ease;
+        }
+        .hero-img-wrap:hover img {
+          transform: scale(1.03);
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 860px) {
           .hero-grid {
             grid-template-columns: 1fr !important;
             min-height: auto !important;
           }
+          .hero-left {
+            border-right: none !important;
+            border-bottom: 1px solid var(--grey);
+            padding: 52px var(--pad) 40px !important;
+          }
           .hero-right {
-            height: 420px !important;
+            height: 300px !important;
+            min-height: 300px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .hero-right {
+            height: 260px !important;
+            min-height: 260px !important;
+          }
+          .hero-ctas {
+            flex-direction: column;
+          }
+          .hero-ctas a {
+            text-align: center;
           }
         }
       `}</style>
@@ -70,6 +100,7 @@ export default function Hero() {
       >
         {/* Left */}
         <div
+          className="hero-left"
           style={{
             padding: 'clamp(48px, 7vw, 96px) var(--pad)',
             display: 'flex',
@@ -110,7 +141,7 @@ export default function Hero() {
               className="hero-name-1"
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(78px, 10vw, 144px)',
+                fontSize: 'clamp(72px, 10vw, 144px)',
                 color: 'var(--white)',
                 display: 'block',
               }}
@@ -121,7 +152,7 @@ export default function Hero() {
               className="hero-name-2"
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(78px, 10vw, 144px)',
+                fontSize: 'clamp(72px, 10vw, 144px)',
                 color: 'var(--orange)',
                 display: 'block',
               }}
@@ -136,7 +167,7 @@ export default function Hero() {
               style={{
                 fontFamily: 'var(--font-serif)',
                 fontStyle: 'italic',
-                fontSize: 'clamp(16px, 1.6vw, 22px)',
+                fontSize: 'clamp(15px, 1.6vw, 22px)',
                 color: 'rgba(245,240,232,0.65)',
                 letterSpacing: '0.5px',
               }}
@@ -212,6 +243,7 @@ export default function Hero() {
 
           {/* Badge */}
           <div
+            className="hero-badge"
             style={{
               position: 'absolute',
               bottom: '28px',

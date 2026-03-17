@@ -72,7 +72,7 @@ export default function VideoFeature({ compact = false }: VideoFeatureProps) {
         .video-grid-2x2 > div {
           background: var(--black);
         }
-        @media (max-width: 700px) {
+        @media (max-width: 640px) {
           .video-grid-2x2 {
             grid-template-columns: 1fr !important;
           }

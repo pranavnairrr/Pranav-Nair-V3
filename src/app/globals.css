@@ -38,6 +38,11 @@ body {
   cursor: none;
 }
 
+/* Restore default cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  body { cursor: auto; }
+}
+
 .sec-lbl {
   font-size: 10px;
   letter-spacing: 4px;
@@ -129,66 +134,86 @@ body {
   color: var(--orange);
 }
 
+/* ─── Keyframe Animations ───────────────────────────── */
+
 @keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes strike {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+  from { width: 0; }
+  to   { width: 100%; }
 }
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 @keyframes blink {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes orangePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 77, 0, 0.35); }
+  50%       { box-shadow: 0 0 0 10px rgba(255, 77, 0, 0); }
+}
+
+@keyframes borderDraw {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes slideMenu {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Mobile Global Overrides ───────────────────────── */
+
 @media (max-width: 960px) {
-  :root {
-    --pad: 24px;
+  :root { --pad: 24px; }
+}
+
+@media (max-width: 600px) {
+  .sec-title {
+    font-size: clamp(38px, 13vw, 58px) !important;
+    line-height: 0.9 !important;
+  }
+  .btn {
+    padding: 13px 22px;
+    font-size: 9px;
   }
 }
