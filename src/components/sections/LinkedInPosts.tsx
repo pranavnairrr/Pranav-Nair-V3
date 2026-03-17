@@ -2,7 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import RevealWrapper from '@/components/ui/RevealWrapper';
-import type { LinkedInPost } from '@/app/api/linkedin-posts/route';
+
+interface LinkedInPost {
+  id: string;
+  text: string;
+  publishedAt: number;
+  url: string;
+}
 
 function timeAgo(ms: number): string {
   const diff = Date.now() - ms;
