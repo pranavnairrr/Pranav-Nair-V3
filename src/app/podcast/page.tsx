@@ -43,13 +43,28 @@ const episodes = [
 export default function PodcastPage() {
   return (
     <main>
+      <style>{`
+        .pod-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--grey); borderBottom: 1px solid var(--grey); }
+        .pod-videos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--grey); }
+        .pod-platforms-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--grey); border: 1px solid var(--grey); }
+        .pod-cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--grey); }
+        .pod-episodes-grid { display: grid; grid-template-columns: 80px 1fr auto; gap: 32px; align-items: start; }
+        @media (max-width: 760px) {
+          .pod-hero { grid-template-columns: 1fr !important; }
+          .pod-videos-grid { grid-template-columns: 1fr !important; }
+          .pod-platforms-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .pod-cta-grid { grid-template-columns: 1fr !important; }
+          .pod-episodes-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+        }
+        @media (max-width: 480px) {
+          .pod-platforms-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+
       {/* ── HERO ── */}
       <section
+        className="pod-hero"
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '1px',
-          background: 'var(--grey)',
           borderBottom: '1px solid var(--grey)',
         }}
       >
@@ -99,14 +114,7 @@ export default function PodcastPage() {
 
       {/* ── SESSIONS GRID ── */}
       <section style={{ borderBottom: '1px solid var(--grey)' }}>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '1px',
-            background: 'var(--grey)',
-          }}
-        >
+        <div className="pod-videos-grid">
           {podcastVideos.map((v) => (
             <div key={v.id} style={{ background: 'var(--black)' }}>
               <LiteYouTube id={v.id} title={v.title} />
@@ -153,13 +161,10 @@ export default function PodcastPage() {
           {episodes.map((ep) => (
             <div
               key={ep.num}
+              className="pod-episodes-grid"
               style={{
                 background: 'var(--black)',
                 padding: '40px 36px',
-                display: 'grid',
-                gridTemplateColumns: '80px 1fr auto',
-                gap: '32px',
-                alignItems: 'start',
                 transition: 'background 0.25s',
               }}
             >
@@ -267,15 +272,7 @@ export default function PodcastPage() {
         >
           Where to Listen
         </span>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '1px',
-            background: 'var(--grey)',
-            border: '1px solid var(--grey)',
-          }}
-        >
+        <div className="pod-platforms-grid">
           {['Spotify', 'YouTube', 'Apple Podcasts', 'Google Podcasts'].map((platform) => (
             <div
               key={platform}
@@ -316,13 +313,10 @@ export default function PodcastPage() {
 
       {/* ── GUEST CTA ── */}
       <section
+        className="pod-cta-grid"
         style={{
           padding: '88px var(--pad)',
           borderBottom: '1px solid var(--grey)',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '1px',
-          background: 'var(--grey)',
         }}
       >
         <div

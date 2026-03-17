@@ -13,6 +13,7 @@ export default function BlogPage() {
     <main>
       {/* ── HERO ── */}
       <section
+        className="blog-hero-grid"
         style={{
           padding: '100px var(--pad) 72px',
           borderBottom: '1px solid var(--grey)',
@@ -22,6 +23,15 @@ export default function BlogPage() {
           background: 'var(--grey)',
         }}
       >
+        <style>{`
+          @media (max-width: 760px) {
+            .blog-hero-grid { grid-template-columns: 1fr !important; }
+            .blog-posts-grid { grid-template-columns: 1fr !important; }
+          }
+          @media (max-width: 1024px) and (min-width: 761px) {
+            .blog-posts-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          }
+        `}</style>
         <div style={{ background: 'var(--black)', padding: '72px var(--pad)', borderRight: 'none' }}>
           <span
             style={{
@@ -86,6 +96,7 @@ export default function BlogPage() {
       {/* ── POSTS GRID ── */}
       <section style={{ padding: '88px var(--pad)', borderBottom: '1px solid var(--grey)' }}>
         <div
+          className="blog-posts-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',

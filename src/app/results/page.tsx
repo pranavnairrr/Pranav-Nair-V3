@@ -51,6 +51,14 @@ const clientResults = [
 export default function ResultsPage() {
   return (
     <main>
+      <style>{`
+        .results-metrics-row { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1px; background: var(--grey); }
+        .results-analytics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--grey); border: 1px solid var(--grey); }
+        @media (max-width: 640px) {
+          .results-metrics-row { grid-template-columns: 1fr !important; }
+          .results-analytics-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
       {/* ── HERO ── */}
       <section
         style={{
@@ -188,14 +196,7 @@ export default function ResultsPage() {
             }}
           >
             {/* Header */}
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '2fr 1fr 1fr',
-                gap: '1px',
-                background: 'var(--grey)',
-              }}
-            >
+            <div className="results-metrics-row">
               {['Metric', 'Before', 'After'].map((h) => (
                 <div
                   key={h}
@@ -218,12 +219,7 @@ export default function ResultsPage() {
             {client.metrics.map((m, i) => (
               <div
                 key={i}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '2fr 1fr 1fr',
-                  gap: '1px',
-                  background: 'var(--grey)',
-                }}
+                className="results-metrics-row"
               >
                 <div
                   style={{
@@ -294,15 +290,7 @@ export default function ResultsPage() {
           LIVE ANALYTICS<br />
           <span style={{ color: 'rgba(245,240,232,0.25)' }}>COMING SOON</span>
         </h2>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '1px',
-            background: 'var(--grey)',
-            border: '1px solid var(--grey)',
-          }}
-        >
+        <div className="results-analytics-grid">
           {['Instagram Insights', 'Google Analytics', 'Meta Ads Manager'].map((label) => (
             <div
               key={label}

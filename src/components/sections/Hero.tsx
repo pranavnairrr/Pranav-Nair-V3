@@ -217,7 +217,7 @@ export default function Hero() {
           }}
         >
           <Image
-            src="/photo.png"
+            src="/hero.webp"
             alt="Pranav Nair"
             fill
             priority
