@@ -1,7 +1,5 @@
 'use client';
 
-import Image from 'next/image';
-
 export default function Footer() {
   const socials = [
     { label: 'LinkedIn', href: 'https://linkedin.com/in/pranavnairrr' },
@@ -23,13 +21,8 @@ export default function Footer() {
         background: 'var(--black)',
       }}
     >
-      <Image
-        src="/logo.png"
-        alt="Pranav Nair"
-        width={48}
-        height={48}
-        style={{ objectFit: 'contain', height: '36px', width: 'auto', opacity: 0.5 }}
-      />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/logo.svg" alt="Pranav Nair" style={{ height: '34px', width: 'auto', display: 'block', opacity: 0.5 }} />
 
       <div style={{ display: 'flex', gap: '28px', alignItems: 'center', flexWrap: 'wrap' }}>
         {socials.map((s) => (

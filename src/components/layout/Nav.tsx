@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
@@ -131,14 +130,8 @@ export default function Nav() {
         }}
       >
         <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-          <Image
-            src="/logo.png"
-            alt="Pranav Nair"
-            width={48}
-            height={48}
-            style={{ objectFit: 'contain', height: '38px', width: 'auto' }}
-            priority
-          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.svg" alt="Pranav Nair" style={{ height: '38px', width: 'auto', display: 'block' }} />
         </Link>
 
         {/* Desktop Links */}
