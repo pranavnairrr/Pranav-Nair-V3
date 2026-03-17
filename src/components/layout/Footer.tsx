@@ -28,7 +28,7 @@ export default function Footer() {
         alt="Pranav Nair"
         width={48}
         height={48}
-        style={{ objectFit: 'contain', height: '36px', width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.35 }}
+        style={{ objectFit: 'contain', height: '36px', width: 'auto', opacity: 0.5 }}
       />
 
       <div style={{ display: 'flex', gap: '28px', alignItems: 'center', flexWrap: 'wrap' }}>
