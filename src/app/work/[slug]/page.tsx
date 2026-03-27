@@ -53,7 +53,7 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
         </div>
 
         {/* Back link */}
-        <Link href="/#work" className="work-back-link">
+        <Link href="/work" className="work-back-link">
           ← Back to Work
         </Link>
 
@@ -221,47 +221,53 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
           BEFORE → AFTER
         </h2>
 
-        {/* Results table */}
-        <div
-          style={{
-            display: 'grid',
-            gap: '1px',
-            background: 'var(--grey)',
-            border: '1px solid var(--grey)',
-            marginBottom: '40px',
-          }}
-        >
-          {/* Header row */}
+        {cs.comingSoon || cs.results.length === 0 ? (
+          /* Coming Soon state */
+          <div
+            style={{
+              border: '1px solid var(--grey)',
+              padding: '60px 40px',
+              textAlign: 'center',
+              marginBottom: '40px',
+            }}
+          >
+            <div
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(32px, 4vw, 56px)',
+                color: 'rgba(245,240,232,0.08)',
+                marginBottom: '20px',
+              }}
+            >
+              COMING SOON
+            </div>
+            <p
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '13px',
+                fontWeight: 300,
+                color: 'rgba(245,240,232,0.35)',
+                maxWidth: '400px',
+                margin: '0 auto',
+                lineHeight: 1.7,
+              }}
+            >
+              Full case study with results and metrics will be published here. Check back soon.
+            </p>
+          </div>
+        ) : (
+          /* Results table */
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: '2fr 1fr 1fr',
               gap: '1px',
               background: 'var(--grey)',
+              border: '1px solid var(--grey)',
+              marginBottom: '40px',
             }}
           >
-            {['Metric', 'Before', 'After'].map((h) => (
-              <div
-                key={h}
-                style={{
-                  background: '#0f0f0f',
-                  padding: '14px 24px',
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '10px',
-                  letterSpacing: '2.5px',
-                  textTransform: 'uppercase',
-                  color: 'rgba(245,240,232,0.28)',
-                }}
-              >
-                {h}
-              </div>
-            ))}
-          </div>
-
-          {/* Data rows */}
-          {cs.results.map((r, i) => (
+            {/* Header row */}
             <div
-              key={i}
               style={{
                 display: 'grid',
                 gridTemplateColumns: '2fr 1fr 1fr',
@@ -269,46 +275,76 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
                 background: 'var(--grey)',
               }}
             >
-              <div
-                style={{
-                  background: 'var(--black)',
-                  padding: '20px 24px',
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '13px',
-                  fontWeight: 500,
-                  color: 'var(--white)',
-                }}
-              >
-                {r.metric}
-              </div>
-              <div
-                style={{
-                  background: 'var(--black)',
-                  padding: '20px 24px',
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '13px',
-                  color: 'rgba(245,240,232,0.35)',
-                  textDecoration: 'line-through',
-                  textDecorationColor: 'rgba(255,77,0,0.4)',
-                }}
-              >
-                {r.before}
-              </div>
-              <div
-                style={{
-                  background: 'var(--black)',
-                  padding: '20px 24px',
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '13px',
-                  fontWeight: 500,
-                  color: 'var(--orange)',
-                }}
-              >
-                {r.after}
-              </div>
+              {['Metric', 'Before', 'After'].map((h) => (
+                <div
+                  key={h}
+                  style={{
+                    background: '#0f0f0f',
+                    padding: '14px 24px',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '10px',
+                    letterSpacing: '2.5px',
+                    textTransform: 'uppercase',
+                    color: 'rgba(245,240,232,0.28)',
+                  }}
+                >
+                  {h}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+
+            {/* Data rows */}
+            {cs.results.map((r, i) => (
+              <div
+                key={i}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '2fr 1fr 1fr',
+                  gap: '1px',
+                  background: 'var(--grey)',
+                }}
+              >
+                <div
+                  style={{
+                    background: 'var(--black)',
+                    padding: '20px 24px',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '13px',
+                    fontWeight: 500,
+                    color: 'var(--white)',
+                  }}
+                >
+                  {r.metric}
+                </div>
+                <div
+                  style={{
+                    background: 'var(--black)',
+                    padding: '20px 24px',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '13px',
+                    color: 'rgba(245,240,232,0.35)',
+                    textDecoration: 'line-through',
+                    textDecorationColor: 'rgba(255,77,0,0.4)',
+                  }}
+                >
+                  {r.before}
+                </div>
+                <div
+                  style={{
+                    background: 'var(--black)',
+                    padding: '20px 24px',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '13px',
+                    fontWeight: 500,
+                    color: 'var(--orange)',
+                  }}
+                >
+                  {r.after}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Result pill */}
         <span
@@ -319,8 +355,8 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
             fontWeight: 500,
             letterSpacing: '2px',
             textTransform: 'uppercase',
-            color: 'var(--orange)',
-            border: '1px solid rgba(255,77,0,0.4)',
+            color: cs.comingSoon ? 'rgba(245,240,232,0.3)' : 'var(--orange)',
+            border: cs.comingSoon ? '1px solid var(--grey)' : '1px solid rgba(255,77,0,0.4)',
             padding: '10px 20px',
           }}
         >

@@ -3,7 +3,13 @@ import { caseStudies } from '@/lib/caseStudies';
 import SectionLabel from '@/components/ui/SectionLabel';
 import RevealWrapper from '@/components/ui/RevealWrapper';
 
+const featuredSlugs = ['am-health-hub', 'macins-group', 'hdfc-securities', 'motilal-oswal'];
+
 export default function CaseStudies() {
+  const featured = featuredSlugs
+    .map((slug) => caseStudies.find((c) => c.slug === slug))
+    .filter(Boolean) as typeof caseStudies;
+
   return (
     <>
       <style>{`
@@ -73,7 +79,7 @@ export default function CaseStudies() {
 
         <RevealWrapper delay={0.15}>
           <div className="cs-grid">
-            {caseStudies.map((cs) => (
+            {featured.map((cs) => (
               <Link
                 key={cs.id}
                 href={`/work/${cs.slug}`}
@@ -173,43 +179,62 @@ export default function CaseStudies() {
               </Link>
             ))}
 
-            {/* CTA Cell */}
+            {/* View All Cell */}
             <div
               style={{
                 background: 'var(--black)',
                 padding: '48px 40px',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'center',
+                justifyContent: 'space-between',
               }}
             >
-              <h3
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(28px, 4vw, 50px)',
-                  lineHeight: 0.92,
-                  color: 'var(--orange)',
-                  marginBottom: '20px',
-                }}
-              >
-                YOUR PROJECT NEXT.
-              </h3>
-              <p
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '13px',
-                  fontWeight: 300,
-                  lineHeight: 1.7,
-                  color: 'rgba(245,240,232,0.42)',
-                  marginBottom: '28px',
-                  maxWidth: '320px',
-                }}
-              >
-                Ready to build something that actually works? Let&apos;s talk strategy.
-              </p>
-              <a href="#contact" className="btn btn-orange" style={{ alignSelf: 'flex-start' }}>
-                Start a Project
-              </a>
+              <div>
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'clamp(28px, 4vw, 50px)',
+                    lineHeight: 0.92,
+                    color: 'var(--orange)',
+                    marginBottom: '20px',
+                  }}
+                >
+                  8 COMPANIES.
+                  <br />
+                  ALL WORK.
+                </h3>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '13px',
+                    fontWeight: 300,
+                    lineHeight: 1.7,
+                    color: 'rgba(245,240,232,0.42)',
+                    marginBottom: '28px',
+                    maxWidth: '300px',
+                  }}
+                >
+                  From finance to healthcare to YouTube — full case studies across every brand I&apos;ve built.
+                </p>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', alignItems: 'flex-start' }}>
+                <Link href="/work" className="btn btn-orange">
+                  View All Case Studies
+                </Link>
+                <a
+                  href="#contact"
+                  style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '10px',
+                    letterSpacing: '2.5px',
+                    textTransform: 'uppercase',
+                    color: 'rgba(245,240,232,0.4)',
+                    textDecoration: 'none',
+                  }}
+                >
+                  Or Start a Project →
+                </a>
+              </div>
             </div>
           </div>
         </RevealWrapper>
