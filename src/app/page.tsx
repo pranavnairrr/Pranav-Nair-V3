@@ -4,7 +4,6 @@ import Marquee from '@/components/sections/Marquee';
 import Clients from '@/components/sections/Clients';
 import VideoFeature from '@/components/sections/VideoFeature';
 import About from '@/components/sections/About';
-import LinkedInPosts from '@/components/sections/LinkedInPosts';
 import Portfolio from '@/components/sections/Portfolio';
 import Services from '@/components/sections/Services';
 import CaseStudies from '@/components/sections/CaseStudies';
@@ -22,7 +21,6 @@ export default function Home() {
       <Clients />
       <VideoFeature />
       <About />
-      <LinkedInPosts />
       <Portfolio />
       <Services />
       <CaseStudies />

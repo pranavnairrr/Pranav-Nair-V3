@@ -24,21 +24,23 @@ export const caseStudies: CaseStudy[] = [
     id: 'am-health-hub',
     slug: 'am-health-hub',
     num: '01',
-    tag: 'Brand Identity · Healthcare · Medical Tourism',
-    title: 'Building AM Health Hub From Zero',
+    tag: 'Google Ads · Paid Search · Medical Tourism · Dubai, UAE',
+    title: 'AM Health Hub — Growth Engine',
     brief:
-      'Developed and managed complete content and social presence for AM Health Hub — a medical tourism platform operating across 40+ countries. Started from zero brand presence.',
+      'From no digital presence to a functioning lead pipeline serving patients across Nigeria and Africa — a cost per submission of $29, 569 total conversions, and $16,465 in total spend. Built the full infrastructure: website, measurement stack, campaigns, CRM pipeline, and intake process.',
     strategy:
-      'Built complete visual identity, content calendar, and full campaign strategy from the ground up. AI-assisted content production to deliver consistent high-volume output.',
+      'Sequenced the build correctly: website and tracking infrastructure before any ads. One clean conversion action (confirmation page view), everything routed through GTM. Three-tier keyword architecture — high-intent procedural, condition-awareness, and geographic-intent terms — with a pre-launch negative keyword list to protect budget from day one.',
     execution:
-      'Brand visual system, social media content, email campaigns, medical tourism guides, 30+ pieces of content per month.',
+      'Six intent-segmented campaigns launched August 2025. Six-week audit uncovered Quality Score 5.74, mobile LCP 5.4s, keyword cannibalization, and 68% impression share lost to quality. Full rebuild: WebP images + lazy loading cut LCP to 1.9s; campaign consolidation eliminated cannibalization; ad copy rewrite pushed QS to 7.9; tCPA smart bidding introduced after 30+ conversions per campaign. 180+ negative keywords added. Odoo CRM implemented to track full patient pipeline post-submission. Intake process redesigned around patient behaviour to reduce drop-off.',
     results: [
-      { metric: 'Instagram Presence', before: 'Zero', after: 'Active, growing' },
-      { metric: 'Monthly Content', before: '0 pieces', after: '30+ pieces' },
-      { metric: 'Brand Consistency', before: 'None', after: 'Full system' },
-      { metric: 'Inquiry Channels', before: 'Word of mouth', after: 'Multi-channel' },
+      { metric: 'Cost Per Submission', before: '$120+ (early campaigns)', after: '$29 blended' },
+      { metric: 'Quality Score', before: '5.74 average', after: '7.9 average' },
+      { metric: 'Mobile LCP', before: '5.4s — Poor', after: '1.9s — Good' },
+      { metric: 'Impression Share Lost', before: '68%', after: '11%' },
+      { metric: 'Total Conversions', before: '0', after: '569' },
+      { metric: 'Campaigns Budget-Limited', before: '6 of 6', after: '0 of 5' },
     ],
-    resultPill: 'Full Brand Built from Scratch',
+    resultPill: '$29 CPA · 569 Conversions · Growth Engine Built',
     logo: '/logos/AM Health.png',
   },
   {

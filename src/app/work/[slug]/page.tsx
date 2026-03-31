@@ -85,6 +85,53 @@ export default function WorkPage({ params }: { params: { slug: string } }) {
         </h1>
       </section>
 
+      {/* ── FULL CASE STUDY CTA (AM Health Hub only) ── */}
+      {cs.slug === 'am-health-hub' && (
+        <section
+          style={{
+            padding: '48px var(--pad)',
+            borderBottom: '1px solid var(--grey)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '24px',
+            background: '#0d0d0d',
+          }}
+        >
+          <div>
+            <span
+              style={{
+                display: 'block',
+                fontFamily: 'var(--font-body)',
+                fontSize: '10px',
+                letterSpacing: '3px',
+                textTransform: 'uppercase',
+                color: 'var(--orange)',
+                marginBottom: '10px',
+              }}
+            >
+              Full Deep-Dive Available
+            </span>
+            <p
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '14px',
+                fontWeight: 300,
+                color: 'rgba(245,240,232,0.5)',
+                maxWidth: '480px',
+                lineHeight: 1.7,
+              }}
+            >
+              10-chapter narrative — the infrastructure build, the audit, the rebuild, and what happened after the leads came in.
+            </p>
+          </div>
+          <Link href="/work/am-health-hub/growth" className="btn btn-orange">
+            Read Full Case Study →
+          </Link>
+        </section>
+      )}
+
       {/* ── BODY ── */}
       <div
         style={{
