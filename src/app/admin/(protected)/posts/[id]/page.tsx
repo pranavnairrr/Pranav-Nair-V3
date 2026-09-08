@@ -6,6 +6,7 @@ import Link from 'next/link';
 import type { JSONContent } from '@tiptap/react';
 import { supabase } from '@/lib/supabaseClient';
 import Editor from '@/components/admin/Editor';
+import { useRole } from '@/components/admin/AdminGuard';
 
 function slugify(s: string) {
   return s
@@ -25,6 +26,8 @@ const EXPIRY_OPTIONS = [
 export default function PostEditorPage() {
   const params = useParams<{ id: string }>();
   const router = useRouter();
+  const role = useRole();
+  const readOnly = role === 'viewer';
   const isNew = params.id === 'new';
 
   const [postId, setPostId] = useState<string | null>(isNew ? null : params.id);
@@ -171,6 +174,17 @@ export default function PostEditorPage() {
     }
   }
 
+  async function deletePost() {
+    if (!postId || !supabase) return;
+    if (!window.confirm('Delete this post permanently? This cannot be undone.')) return;
+    const { error } = await supabase.from('posts').delete().eq('id', postId);
+    if (error) {
+      alert(error.message);
+      return;
+    }
+    router.replace('/admin');
+  }
+
   async function copyShareLink() {
     if (!shareToken) return;
     const url = `${siteOrigin}/read/${slug}?t=${shareToken}`;
@@ -189,17 +203,35 @@ export default function PostEditorPage() {
           ← All Posts
         </Link>
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-          {savedAt && (
+          {savedAt && !readOnly && (
             <span style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'rgba(245,240,232,0.3)' }}>
               Saved {savedAt.toLocaleTimeString()}
             </span>
           )}
-          <button onClick={() => save()} disabled={saving} className="btn btn-outline" style={{ background: 'transparent', cursor: 'pointer' }}>
-            {saving ? 'Saving…' : 'Save Draft'}
-          </button>
-          <button onClick={() => save({ publish: true })} disabled={saving} className="btn btn-orange" style={{ cursor: 'pointer' }}>
-            {publishedAt ? 'Update & Republish' : 'Publish'}
-          </button>
+          {readOnly && (
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: '11px', letterSpacing: '1.5px', textTransform: 'uppercase', color: 'rgba(245,240,232,0.3)' }}>
+              Read Only
+            </span>
+          )}
+          {role === 'admin' && postId && (
+            <button
+              onClick={deletePost}
+              className="btn btn-outline"
+              style={{ background: 'transparent', cursor: 'pointer', borderColor: '#c94a4a', color: '#c94a4a' }}
+            >
+              Delete
+            </button>
+          )}
+          {!readOnly && (
+            <>
+              <button onClick={() => save()} disabled={saving} className="btn btn-outline" style={{ background: 'transparent', cursor: 'pointer' }}>
+                {saving ? 'Saving…' : 'Save Draft'}
+              </button>
+              <button onClick={() => save({ publish: true })} disabled={saving} className="btn btn-orange" style={{ cursor: 'pointer' }}>
+                {publishedAt ? 'Update & Republish' : 'Publish'}
+              </button>
+            </>
+          )}
         </div>
       </div>
 
@@ -210,6 +242,7 @@ export default function PostEditorPage() {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Post title"
+            disabled={readOnly}
             style={{
               width: '100%',
               background: 'transparent',
@@ -228,6 +261,7 @@ export default function PostEditorPage() {
             onChange={(e) => setExcerpt(e.target.value)}
             placeholder="One or two sentence excerpt"
             rows={2}
+            disabled={readOnly}
             style={{
               width: '100%',
               background: '#0d0d0d',
@@ -241,7 +275,7 @@ export default function PostEditorPage() {
               resize: 'vertical',
             }}
           />
-          <Editor content={body} onChange={setBody} />
+          <Editor content={body} onChange={setBody} editable={!readOnly} />
         </div>
 
         {/* Sidebar */}
@@ -253,16 +287,17 @@ export default function PostEditorPage() {
                 setSlug(slugify(e.target.value));
                 setSlugEdited(true);
               }}
+              disabled={readOnly}
               style={sideInput}
             />
           </Field>
 
           <Field label="Category">
-            <input value={category} onChange={(e) => setCategory(e.target.value)} style={sideInput} />
+            <input value={category} onChange={(e) => setCategory(e.target.value)} disabled={readOnly} style={sideInput} />
           </Field>
 
           <Field label="Visibility">
-            <select value={visibility} onChange={(e) => setVisibility(e.target.value as typeof visibility)} style={sideInput}>
+            <select value={visibility} onChange={(e) => setVisibility(e.target.value as typeof visibility)} disabled={readOnly} style={sideInput}>
               <option value="public">Public</option>
               <option value="private">Private (link only)</option>
               <option value="password">Password</option>
@@ -285,7 +320,9 @@ export default function PostEditorPage() {
                   </div>
                   <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                     <button onClick={copyShareLink} className="btn btn-outline" style={smallBtn}>Copy</button>
-                    <button onClick={revokeShareLink} className="btn btn-outline" style={smallBtn}>Revoke</button>
+                    {!readOnly && (
+                      <button onClick={revokeShareLink} className="btn btn-outline" style={smallBtn}>Revoke</button>
+                    )}
                   </div>
                 </>
               ) : (
@@ -294,15 +331,17 @@ export default function PostEditorPage() {
                 </p>
               )}
 
-              <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '10px' }}>
-                {EXPIRY_OPTIONS.map((opt) => (
-                  <button key={opt.label} onClick={() => generateShareLink(opt.days)} className="btn btn-outline" style={smallBtn}>
-                    {shareToken ? 'Regenerate' : 'Create'}: {opt.label}
-                  </button>
-                ))}
-              </div>
+              {!readOnly && (
+                <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '10px' }}>
+                  {EXPIRY_OPTIONS.map((opt) => (
+                    <button key={opt.label} onClick={() => generateShareLink(opt.days)} className="btn btn-outline" style={smallBtn}>
+                      {shareToken ? 'Regenerate' : 'Create'}: {opt.label}
+                    </button>
+                  ))}
+                </div>
+              )}
 
-              {visibility === 'password' && (
+              {!readOnly && visibility === 'password' && (
                 <div style={{ marginTop: '14px', borderTop: '1px solid var(--grey)', paddingTop: '14px' }}>
                   <input
                     type="password"

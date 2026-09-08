@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabaseClient';
+import { useRole } from '@/components/admin/AdminGuard';
 
 interface PostRow {
   id: string;
@@ -14,6 +15,7 @@ interface PostRow {
 }
 
 export default function AdminDashboard() {
+  const role = useRole();
   const [posts, setPosts] = useState<PostRow[] | null>(null);
 
   useEffect(() => {
@@ -25,45 +27,17 @@ export default function AdminDashboard() {
       .then(({ data }) => setPosts(data ?? []));
   }, []);
 
-  async function signOut() {
-    await supabase?.auth.signOut();
-    window.location.href = '/admin/login';
-  }
-
   return (
     <main style={{ padding: '48px 24px', maxWidth: '900px', margin: '0 auto' }}>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: '32px',
-          flexWrap: 'wrap',
-          gap: '16px',
-        }}
-      >
-        <h1
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(32px, 4vw, 48px)',
-            color: 'var(--white)',
-            lineHeight: 1,
-          }}
-        >
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px', flexWrap: 'wrap', gap: '16px' }}>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 4vw, 48px)', color: 'var(--white)', lineHeight: 1 }}>
           POSTS
         </h1>
-        <div style={{ display: 'flex', gap: '12px' }}>
+        {role !== 'viewer' && (
           <Link href="/admin/posts/new" className="btn btn-orange">
             New Post
           </Link>
-          <button
-            onClick={signOut}
-            className="btn btn-outline"
-            style={{ background: 'transparent', cursor: 'pointer' }}
-          >
-            Sign Out
-          </button>
-        </div>
+        )}
       </div>
 
       {posts === null && (
@@ -72,7 +46,7 @@ export default function AdminDashboard() {
 
       {posts !== null && posts.length === 0 && (
         <p style={{ color: 'rgba(245,240,232,0.4)', fontFamily: 'var(--font-body)' }}>
-          No posts yet. Create your first one.
+          No posts yet.{role !== 'viewer' && ' Create your first one.'}
         </p>
       )}
 
@@ -102,7 +76,7 @@ export default function AdminDashboard() {
                 </div>
               </div>
               <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '2px', color: 'var(--orange)', textTransform: 'uppercase', flexShrink: 0 }}>
-                Edit →
+                {role === 'viewer' ? 'View →' : 'Edit →'}
               </span>
             </Link>
           ))}

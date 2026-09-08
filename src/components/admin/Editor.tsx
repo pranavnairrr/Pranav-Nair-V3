@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useEditor, EditorContent, type JSONContent } from '@tiptap/react';
 import Placeholder from '@tiptap/extension-placeholder';
 import { tiptapExtensions } from '@/lib/tiptapExtensions';
@@ -9,11 +9,12 @@ import { supabase } from '@/lib/supabaseClient';
 interface EditorProps {
   content: JSONContent | null;
   onChange: (json: JSONContent) => void;
+  editable?: boolean;
 }
 
 const YOUTUBE_RE = /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)([\w-]{11})/;
 
-export default function Editor({ content, onChange }: EditorProps) {
+export default function Editor({ content, onChange, editable = true }: EditorProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const editor = useEditor({
@@ -24,12 +25,17 @@ export default function Editor({ content, onChange }: EditorProps) {
     content: content && content.content?.length ? content : { type: 'doc', content: [{ type: 'paragraph' }] },
     onUpdate: ({ editor }) => onChange(editor.getJSON()),
     immediatelyRender: false,
+    editable,
     editorProps: {
       attributes: {
         class: 'post-editor-content',
       },
     },
   });
+
+  useEffect(() => {
+    editor?.setEditable(editable);
+  }, [editable, editor]);
 
   async function handleImagePick(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -150,16 +156,20 @@ export default function Editor({ content, onChange }: EditorProps) {
         .lp-url { font-size: 11px; color: rgba(245,240,232,0.3); }
       `}</style>
 
-      <div className="post-editor-toolbar">
-        <button type="button" onClick={() => editor.chain().focus().toggleBold().run()} className={editor.isActive('bold') ? 'is-active' : ''}>B</button>
-        <button type="button" onClick={() => editor.chain().focus().toggleItalic().run()} className={editor.isActive('italic') ? 'is-active' : ''}>I</button>
-        <button type="button" onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} className={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}>H2</button>
-        <button type="button" onClick={() => editor.chain().focus().toggleBulletList().run()} className={editor.isActive('bulletList') ? 'is-active' : ''}>List</button>
-        <button type="button" onClick={() => editor.chain().focus().toggleBlockquote().run()} className={editor.isActive('blockquote') ? 'is-active' : ''}>Quote</button>
-        <button type="button" onClick={() => fileInputRef.current?.click()}>Image</button>
-        <button type="button" onClick={handleInsertLink}>Link / Embed</button>
-      </div>
-      <input ref={fileInputRef} type="file" accept="image/*" onChange={handleImagePick} style={{ display: 'none' }} />
+      {editable && (
+        <>
+          <div className="post-editor-toolbar">
+            <button type="button" onClick={() => editor.chain().focus().toggleBold().run()} className={editor.isActive('bold') ? 'is-active' : ''}>B</button>
+            <button type="button" onClick={() => editor.chain().focus().toggleItalic().run()} className={editor.isActive('italic') ? 'is-active' : ''}>I</button>
+            <button type="button" onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} className={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}>H2</button>
+            <button type="button" onClick={() => editor.chain().focus().toggleBulletList().run()} className={editor.isActive('bulletList') ? 'is-active' : ''}>List</button>
+            <button type="button" onClick={() => editor.chain().focus().toggleBlockquote().run()} className={editor.isActive('blockquote') ? 'is-active' : ''}>Quote</button>
+            <button type="button" onClick={() => fileInputRef.current?.click()}>Image</button>
+            <button type="button" onClick={handleInsertLink}>Link / Embed</button>
+          </div>
+          <input ref={fileInputRef} type="file" accept="image/*" onChange={handleImagePick} style={{ display: 'none' }} />
+        </>
+      )}
 
       <EditorContent editor={editor} />
     </div>

@@ -1,16 +1,25 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Session } from '@supabase/supabase-js';
 import { supabase } from '@/lib/supabaseClient';
 
-// Real access control lives in Postgres RLS (is_admin() checks the JWT's
-// email claim on every request) — this is just a UX redirect so a signed
-// out visitor to /admin lands on the login form instead of an empty page.
+export type Role = 'admin' | 'content_manager' | 'viewer' | null;
+
+const RoleContext = createContext<Role>(null);
+export function useRole() {
+  return useContext(RoleContext);
+}
+
+// Real access control lives in Postgres RLS (is_admin() / can_write() check
+// admin_users on every request) — this is the UX layer: redirect signed-out
+// visitors to the login form, and make each caller's role available to the
+// UI so it can hide buttons a viewer or content manager can't actually use.
 export default function AdminGuard({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [session, setSession] = useState<Session | null | 'loading'>('loading');
+  const [role, setRole] = useState<Role>(null);
 
   useEffect(() => {
     if (!supabase) {
@@ -23,7 +32,13 @@ export default function AdminGuard({ children }: { children: React.ReactNode }) 
   }, []);
 
   useEffect(() => {
-    if (session === null) router.replace('/admin/login');
+    if (session === null) {
+      router.replace('/admin/login');
+      return;
+    }
+    if (session && supabase) {
+      supabase.rpc('my_role').then(({ data }) => setRole((data as Role) ?? null));
+    }
   }, [session, router]);
 
   if (session === 'loading') {
@@ -36,5 +51,5 @@ export default function AdminGuard({ children }: { children: React.ReactNode }) 
 
   if (!session) return null;
 
-  return <>{children}</>;
+  return <RoleContext.Provider value={role}>{children}</RoleContext.Provider>;
 }
