@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getPublicPosts, getPublicPostBySlug, formatMonthYear, estimateReadTime } from '@/lib/posts';
+import { getPublicPosts, getPublicPostBySlug, getPageViewCount, formatMonthYear, estimateReadTime } from '@/lib/posts';
 import { renderPostHtml } from '@/lib/renderPostHtml';
+import { getPageSearchTotals } from '@/lib/searchConsole';
 
 export const revalidate = 60;
 
@@ -46,6 +47,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const allPosts = await getPublicPosts();
   const others = allPosts.filter((p) => p.slug !== post.slug);
   const html = renderPostHtml(post.body_json);
+  const viewCount = await getPageViewCount(`/blog/${post.slug}`);
+  const searchTotals = await getPageSearchTotals(`https://pranavnair.co/blog/${post.slug}`);
 
   return (
     <main>
@@ -79,6 +82,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(245,240,232,0.25)' }}>
             {estimateReadTime(post.body_json)}
           </span>
+          {viewCount > 0 && (
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(245,240,232,0.25)' }}>
+              {viewCount} view{viewCount === 1 ? '' : 's'}
+            </span>
+          )}
+          {searchTotals && searchTotals.impressions > 0 && (
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(245,240,232,0.25)' }}>
+              {searchTotals.impressions.toLocaleString()} search impressions
+            </span>
+          )}
         </div>
 
         <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(42px, 5.5vw, 88px)', lineHeight: 0.92, marginBottom: '32px' }}>

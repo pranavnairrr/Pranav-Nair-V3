@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getPublicPosts, formatMonthYear, estimateReadTime } from '@/lib/posts';
+import { getPublicPosts, getPageViewCount, formatMonthYear, estimateReadTime } from '@/lib/posts';
 
 export const metadata: Metadata = {
   title: 'Insights — Pranav Nair',
@@ -12,6 +12,7 @@ export const revalidate = 60;
 
 export default async function BlogPage() {
   const posts = await getPublicPosts();
+  const viewCounts = await Promise.all(posts.map((p) => getPageViewCount(`/blog/${p.slug}`)));
 
   return (
     <main>
@@ -167,6 +168,7 @@ export default async function BlogPage() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '8px', paddingTop: '20px', borderTop: '1px solid var(--grey)' }}>
                   <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(245,240,232,0.22)' }}>
                     {formatMonthYear(post.published_at)}
+                    {viewCounts[i] > 0 && ` · ${viewCounts[i]} view${viewCounts[i] === 1 ? '' : 's'}`}
                   </span>
                   <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--orange)' }}>
                     Read →

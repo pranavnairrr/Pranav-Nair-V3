@@ -5,6 +5,7 @@ import CustomCursor from '@/components/layout/CustomCursor';
 import Nav from '@/components/layout/Nav';
 import Footer from '@/components/layout/Footer';
 import AnalyticsTracker from '@/components/layout/AnalyticsTracker';
+import { getSearchTotals } from '@/lib/searchConsole';
 
 const bebasNeue = Bebas_Neue({
   weight: '400',
@@ -33,11 +34,12 @@ export const metadata: Metadata = {
     'Notes on growth, product, and using AI to do more with less — written by Pranav Nair, Head of Marketing at Aries Group & Macins Group, Dubai.',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const searchTotals = await getSearchTotals();
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -81,7 +83,7 @@ export default function RootLayout({
         <AnalyticsTracker />
         <Nav />
         {children}
-        <Footer />
+        <Footer searchTotals={searchTotals} />
       </body>
     </html>
   );

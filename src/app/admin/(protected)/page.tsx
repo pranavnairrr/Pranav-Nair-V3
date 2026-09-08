@@ -9,6 +9,7 @@ interface PostRow {
   id: string;
   slug: string;
   title: string;
+  type: string;
   visibility: string;
   published_at: string | null;
   updated_at: string;
@@ -22,7 +23,7 @@ export default function AdminDashboard() {
     if (!supabase) return;
     supabase
       .from('posts')
-      .select('id, slug, title, visibility, published_at, updated_at')
+      .select('id, slug, title, type, visibility, published_at, updated_at')
       .order('updated_at', { ascending: false })
       .then(({ data }) => setPosts(data ?? []));
   }, []);
@@ -34,9 +35,14 @@ export default function AdminDashboard() {
           POSTS
         </h1>
         {role !== 'viewer' && (
-          <Link href="/admin/posts/new" className="btn btn-orange">
-            New Post
-          </Link>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <Link href="/admin/notes/new" className="btn btn-outline">
+              New Note
+            </Link>
+            <Link href="/admin/posts/new" className="btn btn-orange">
+              New Post
+            </Link>
+          </div>
         )}
       </div>
 
@@ -55,7 +61,7 @@ export default function AdminDashboard() {
           {posts.map((p) => (
             <Link
               key={p.id}
-              href={`/admin/posts/${p.id}`}
+              href={p.type === 'note' ? `/admin/notes/${p.id}` : `/admin/posts/${p.id}`}
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -69,10 +75,10 @@ export default function AdminDashboard() {
             >
               <div>
                 <div style={{ fontFamily: 'var(--font-body)', fontSize: '15px', color: 'var(--white)' }}>
-                  {p.title || '(untitled)'}
+                  {p.type === 'note' ? 'Note' : p.title || '(untitled)'}
                 </div>
                 <div style={{ fontFamily: 'var(--font-body)', fontSize: '11px', color: 'rgba(245,240,232,0.35)', marginTop: '4px' }}>
-                  {p.published_at ? 'Published' : 'Draft'} · {p.visibility}
+                  {p.type === 'note' ? 'Note' : 'Article'} · {p.published_at ? 'Published' : 'Draft'} · {p.visibility}
                 </div>
               </div>
               <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '2px', color: 'var(--orange)', textTransform: 'uppercase', flexShrink: 0 }}>

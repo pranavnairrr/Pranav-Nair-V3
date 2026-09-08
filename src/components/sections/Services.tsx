@@ -1,5 +1,7 @@
 import SectionLabel from '@/components/ui/SectionLabel';
 import RevealWrapper from '@/components/ui/RevealWrapper';
+import { skillGroups } from '@/lib/skills';
+import { brandIcons } from '@/lib/brandIcons';
 
 const skills = [
   {
@@ -92,6 +94,43 @@ export default function Services() {
             grid-template-columns: 1fr !important;
           }
         }
+        .skill-group-title {
+          font-family: var(--font-body);
+          font-size: 10px;
+          font-weight: 500;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: var(--orange);
+          opacity: 0.75;
+          margin-bottom: 14px;
+        }
+        .skill-chips {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          margin-bottom: 36px;
+        }
+        .skill-chip {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          padding: 8px 14px;
+          border: 1px solid var(--grey);
+          background: #0d0d0d;
+          font-family: var(--font-body);
+          font-size: 11.5px;
+          font-weight: 300;
+          color: rgba(245,240,232,0.7);
+          letter-spacing: 0.3px;
+          transition: border-color 0.2s, color 0.2s;
+        }
+        .skill-chip:hover {
+          border-color: var(--orange);
+          color: var(--white);
+        }
+        .skill-chip svg {
+          flex-shrink: 0;
+        }
       `}</style>
 
       <section
@@ -157,6 +196,44 @@ export default function Services() {
                 >
                   {skill.desc}
                 </p>
+              </div>
+            ))}
+          </div>
+        </RevealWrapper>
+
+        <RevealWrapper delay={0.2}>
+          <div style={{ marginTop: '64px' }}>
+            <SectionLabel>Tools I Use</SectionLabel>
+            <h3
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(22px, 3vw, 30px)',
+                lineHeight: 1,
+                marginBottom: '32px',
+                color: 'var(--white)',
+              }}
+            >
+              SKILLS &amp; SOFTWARE
+            </h3>
+
+            {skillGroups.map((group) => (
+              <div key={group.category}>
+                <div className="skill-group-title">{group.category}</div>
+                <div className="skill-chips">
+                  {group.items.map((item) => {
+                    const icon = item.icon ? brandIcons[item.icon] : undefined;
+                    return (
+                      <span className="skill-chip" key={item.label}>
+                        {icon && (
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d={icon.path} />
+                          </svg>
+                        )}
+                        {item.label}
+                      </span>
+                    );
+                  })}
+                </div>
               </div>
             ))}
           </div>

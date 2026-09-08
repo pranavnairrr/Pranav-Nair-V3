@@ -256,7 +256,7 @@ const afterItems = [
   'Real cost-per-qualified-lead now measurable',
 ];
 
-export default function AmHealthHubCaseStudy() {
+export default function GrowthEngineCaseStudy() {
   return (
     <>
       <style>{`

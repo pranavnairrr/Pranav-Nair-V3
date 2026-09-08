@@ -27,6 +27,7 @@
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
     "framer-motion": "^11.3.0",
+    "googleapis": "^178.0.0",
     "next": "^16.1.6",
     "postcss": "^8",
     "react": "^18",

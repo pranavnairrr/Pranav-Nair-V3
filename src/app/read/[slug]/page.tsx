@@ -4,14 +4,24 @@ import { useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { renderPostHtmlClient } from '@/lib/renderPostHtmlClient';
+import GrowthEngineCaseStudy from '@/components/read/GrowthEngineCaseStudy';
 
 interface PostData {
+  slug: string;
   title: string;
   excerpt: string;
   category: string | null;
   body_json: unknown;
   visibility: string;
 }
+
+// A small number of private posts have fully custom, hand-built layouts
+// (metric grids, issue cards, etc.) that the Tiptap editor can't express.
+// For those, the DB row still drives access control (share token, password,
+// rate limiting) — this just swaps what renders once access is granted.
+const CUSTOM_RENDERERS: Record<string, React.ComponentType> = {
+  'growth-engine-case-study': GrowthEngineCaseStudy,
+};
 
 export default function ReadPage() {
   const params = useParams<{ slug: string }>();
@@ -96,6 +106,9 @@ export default function ReadPage() {
   }
 
   if (!post) return <CenteredMessage>This link is invalid or has expired.</CenteredMessage>;
+
+  const CustomRenderer = CUSTOM_RENDERERS[post.slug];
+  if (CustomRenderer) return <CustomRenderer />;
 
   const html = renderPostHtmlClient(post.body_json as never);
 

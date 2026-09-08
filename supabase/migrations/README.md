@@ -15,5 +15,10 @@ just for readability.
 | M06 | `..._M06_roles.sql` | Replaces the single hardcoded admin email with real roles: admin / content_manager / viewer |
 | M07 | `..._M07_seed_admin_retry.sql` | Re-seeds the admin's `admin_users` row now that the Supabase Auth account actually exists |
 | M08 | `..._M08_password_rate_limit.sql` | Locks a share token out after 10 wrong password guesses in 15 minutes |
+| M09 | `..._M09_security_advisor_fixes.sql` | Fixes the "Unrestricted" analytics views (were bypassing RLS via implicit SECURITY DEFINER) + pins `search_path` on 5 functions per Supabase's Security Advisor |
+| M10 | `..._M10_rewrite_blog_posts.sql` | Rewrites both seeded blog posts (less AI-pattern-y, no employer-specific mentions) and backdates them to real Jan 2026 dates instead of the migration run date |
+| M11 | `..._M11_public_page_view_count.sql` | Public-callable `get_page_view_count(path)` — returns just a number, no raw analytics rows, so blog posts can show real view counts |
+| M12 | `..._M12_migrate_case_study_to_posts.sql` | Moves the AM Health Hub case study from the old standalone `/vault` page into a real `posts` row (private, share-link, rate-limited) — the old `/vault/be411a9e5d45` URL is retired |
+| M13 | `..._M13_notes.sql` | Adds a `type` column (`article` / `note`) to `posts` so short X/Threads-style posts reuse the same table, RLS, and visibility system as blog articles |
 
 New migrations always go at the end with the next timestamp + next `M` number.

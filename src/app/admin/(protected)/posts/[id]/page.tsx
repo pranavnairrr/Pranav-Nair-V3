@@ -198,6 +198,19 @@ export default function PostEditorPage() {
 
   return (
     <main style={{ padding: '32px 24px', maxWidth: '1100px', margin: '0 auto' }}>
+      <style>{`
+        .composer-grid {
+          display: grid;
+          grid-template-columns: 1fr 300px;
+          gap: 32px;
+          align-items: start;
+        }
+        @media (max-width: 860px) {
+          .composer-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
         <Link href="/admin" style={{ fontFamily: 'var(--font-body)', fontSize: '11px', letterSpacing: '2px', color: 'rgba(245,240,232,0.4)', textDecoration: 'none' }}>
           ← All Posts
@@ -235,7 +248,7 @@ export default function PostEditorPage() {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '32px', alignItems: 'start' }}>
+      <div className="composer-grid">
         {/* Main */}
         <div>
           <input
