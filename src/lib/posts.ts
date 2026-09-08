@@ -66,6 +66,21 @@ export function formatMonthYear(iso: string): string {
   return new Date(iso).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 }
 
+export function extractPlainText(body: JSONContent, maxLength = 90): string {
+  let text = '';
+  function walk(node: JSONContent) {
+    if (text.length >= maxLength) return;
+    if (node.text) text += node.text;
+    else if (node.type === 'image') text += '[image] ';
+    else if (node.type === 'linkPreview') text += '[link] ';
+    node.content?.forEach(walk);
+    if (node.type === 'paragraph' || node.type === 'heading') text += ' ';
+  }
+  walk(body);
+  text = text.trim();
+  return text.length > maxLength ? text.slice(0, maxLength).trim() + '…' : text;
+}
+
 export function estimateReadTime(body: JSONContent): string {
   let words = 0;
   function walk(node: JSONContent) {

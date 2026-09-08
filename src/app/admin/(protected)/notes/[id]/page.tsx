@@ -16,7 +16,7 @@ export default function NoteEditorPage() {
   const params = useParams<{ id: string }>();
   const router = useRouter();
   const role = useRole();
-  const readOnly = role === 'viewer';
+  const readOnly = role !== 'admin' && role !== 'content_manager';
   const isNew = params.id === 'new';
 
   const [noteId, setNoteId] = useState<string | null>(isNew ? null : params.id);

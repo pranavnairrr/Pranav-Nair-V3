@@ -27,7 +27,7 @@ export default function PostEditorPage() {
   const params = useParams<{ id: string }>();
   const router = useRouter();
   const role = useRole();
-  const readOnly = role === 'viewer';
+  const readOnly = role !== 'admin' && role !== 'content_manager';
   const isNew = params.id === 'new';
 
   const [postId, setPostId] = useState<string | null>(isNew ? null : params.id);
