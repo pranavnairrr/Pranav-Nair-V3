@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "node server.js",
+    "start": "next start",
     "db:login": "supabase login",
     "db:link": "supabase link --project-ref vbtjvootafypxzujbdpx",
-    "db:push": "supabase db push"
+    "db:push": "supabase db push",
+    "functions:deploy": "supabase functions deploy fetch-link-preview"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.116.0",
