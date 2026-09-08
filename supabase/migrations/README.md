@@ -20,5 +20,6 @@ just for readability.
 | M11 | `..._M11_public_page_view_count.sql` | Public-callable `get_page_view_count(path)` — returns just a number, no raw analytics rows, so blog posts can show real view counts |
 | M12 | `..._M12_migrate_case_study_to_posts.sql` | Moves the AM Health Hub case study from the old standalone `/vault` page into a real `posts` row (private, share-link, rate-limited) — the old `/vault/be411a9e5d45` URL is retired |
 | M13 | `..._M13_notes.sql` | Adds a `type` column (`article` / `note`) to `posts` so short X/Threads-style posts reuse the same table, RLS, and visibility system as blog articles |
+| M14 | `..._M14_fix_role_check_functions.sql` | Fixes "new row violates RLS policy" on publish — makes `is_admin`/`is_team_member`/`can_write`/`my_role` SECURITY DEFINER so they reliably see `admin_users` regardless of the caller's own row visibility into it |
 
 New migrations always go at the end with the next timestamp + next `M` number.
