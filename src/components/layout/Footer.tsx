@@ -1,12 +1,17 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
+
 export default function Footer() {
+  const pathname = usePathname();
   const socials = [
     { label: 'LinkedIn', href: 'https://linkedin.com/in/pranavnairrr' },
     { label: 'Instagram', href: 'https://instagram.com/ps.ooo7' },
     { label: 'X', href: 'https://x.com/PranavNair__' },
     { label: 'YouTube', href: 'https://youtube.com/@pranavnairrrrr' },
   ];
+
+  if (pathname?.startsWith('/admin')) return null;
 
   return (
     <footer

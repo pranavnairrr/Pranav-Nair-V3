@@ -7,6 +7,7 @@ export interface PortfolioItem {
   cta: string;
   platform: string;
   href: string;
+  thumbnail: string;
 }
 
 export const portfolioItems: PortfolioItem[] = [
@@ -19,6 +20,7 @@ export const portfolioItems: PortfolioItem[] = [
     cta: 'Explore on Adobe Portfolio',
     platform: 'ADOBE',
     href: 'https://pranavnairrr.myportfolio.com',
+    thumbnail: '/screenshots/adobe-portfolio.png',
   },
   {
     id: 'canva',
@@ -29,5 +31,6 @@ export const portfolioItems: PortfolioItem[] = [
     cta: 'Explore on Canva',
     platform: 'CANVA',
     href: 'https://pranavnair.my.canva.site/',
+    thumbnail: '/screenshots/canva-portfolio.png',
   },
 ];

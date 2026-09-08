@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { blogPosts } from '@/lib/blog';
+import { getPublicPosts, formatMonthYear, estimateReadTime } from '@/lib/posts';
 
 export const metadata: Metadata = {
   title: 'Insights — Pranav Nair',
@@ -8,7 +8,11 @@ export const metadata: Metadata = {
     'Marketing strategy, AI workflows, and brand building — written by Pranav Nair, Dubai-based Head of Marketing.',
 };
 
-export default function BlogPage() {
+export const revalidate = 60;
+
+export default async function BlogPage() {
+  const posts = await getPublicPosts();
+
   return (
     <main>
       {/* ── HERO ── */}
@@ -88,169 +92,95 @@ export default function BlogPage() {
               color: 'rgba(245,240,232,0.25)',
             }}
           >
-            {blogPosts.length} Articles Published
+            {posts.length} Article{posts.length === 1 ? '' : 's'} Published
           </span>
         </div>
       </section>
 
       {/* ── POSTS GRID ── */}
       <section style={{ padding: '88px var(--pad)', borderBottom: '1px solid var(--grey)' }}>
-        <div
-          className="blog-posts-grid"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '1px',
-            background: 'var(--grey)',
-            border: '1px solid var(--grey)',
-          }}
-        >
-          {blogPosts.map((post, i) => (
-            <Link
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              style={{
-                background: 'var(--black)',
-                padding: '48px 36px',
-                textDecoration: 'none',
-                color: 'inherit',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '16px',
-                position: 'relative',
-                overflow: 'hidden',
-                transition: 'background 0.25s',
-              }}
-            >
-              {/* Ghost index */}
-              <div
+        {posts.length === 0 ? (
+          <p style={{ fontFamily: 'var(--font-body)', color: 'rgba(245,240,232,0.35)' }}>
+            Nothing published yet. Check back soon.
+          </p>
+        ) : (
+          <div
+            className="blog-posts-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: '1px',
+              background: 'var(--grey)',
+              border: '1px solid var(--grey)',
+            }}
+          >
+            {posts.map((post, i) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
                 style={{
-                  position: 'absolute',
-                  top: '16px',
-                  right: '20px',
-                  fontFamily: 'var(--font-display)',
-                  fontSize: '68px',
-                  color: 'rgba(245,240,232,0.025)',
-                  lineHeight: 1,
-                  pointerEvents: 'none',
-                  userSelect: 'none',
-                }}
-              >
-                {String(i + 1).padStart(2, '0')}
-              </div>
-
-              {/* Category + read time */}
-              <div
-                style={{
+                  background: 'var(--black)',
+                  padding: '48px 36px',
+                  textDecoration: 'none',
+                  color: 'inherit',
                   display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
+                  flexDirection: 'column',
+                  gap: '16px',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  transition: 'background 0.25s',
                 }}
               >
-                <span
+                <div
                   style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '9px',
-                    letterSpacing: '2.5px',
-                    textTransform: 'uppercase',
-                    color: 'var(--orange)',
+                    position: 'absolute',
+                    top: '16px',
+                    right: '20px',
+                    fontFamily: 'var(--font-display)',
+                    fontSize: '68px',
+                    color: 'rgba(245,240,232,0.025)',
+                    lineHeight: 1,
+                    pointerEvents: 'none',
+                    userSelect: 'none',
                   }}
                 >
-                  {post.category}
-                </span>
-                <span
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '9px',
-                    letterSpacing: '1.5px',
-                    textTransform: 'uppercase',
-                    color: 'rgba(245,240,232,0.22)',
-                  }}
-                >
-                  {post.readTime}
-                </span>
-              </div>
+                  {String(i + 1).padStart(2, '0')}
+                </div>
 
-              {/* Title */}
-              <h2
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(22px, 2.2vw, 32px)',
-                  lineHeight: 1.0,
-                  color: 'var(--white)',
-                }}
-              >
-                {post.title.toUpperCase()}
-              </h2>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '9px', letterSpacing: '2.5px', textTransform: 'uppercase', color: 'var(--orange)' }}>
+                    {post.category || 'Insights'}
+                  </span>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '9px', letterSpacing: '1.5px', textTransform: 'uppercase', color: 'rgba(245,240,232,0.22)' }}>
+                    {estimateReadTime(post.body_json)}
+                  </span>
+                </div>
 
-              {/* Excerpt */}
-              <p
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '12px',
-                  fontWeight: 300,
-                  lineHeight: 1.75,
-                  color: 'rgba(245,240,232,0.42)',
-                  flex: 1,
-                }}
-              >
-                {post.excerpt}
-              </p>
+                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(22px, 2.2vw, 32px)', lineHeight: 1.0, color: 'var(--white)' }}>
+                  {post.title.toUpperCase()}
+                </h2>
 
-              {/* Date + CTA */}
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  marginTop: '8px',
-                  paddingTop: '20px',
-                  borderTop: '1px solid var(--grey)',
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '10px',
-                    letterSpacing: '2px',
-                    textTransform: 'uppercase',
-                    color: 'rgba(245,240,232,0.22)',
-                  }}
-                >
-                  {post.date}
-                </span>
-                <span
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '10px',
-                    letterSpacing: '2px',
-                    textTransform: 'uppercase',
-                    color: 'var(--orange)',
-                  }}
-                >
-                  Read →
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', fontWeight: 300, lineHeight: 1.75, color: 'rgba(245,240,232,0.42)', flex: 1 }}>
+                  {post.excerpt}
+                </p>
+
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '8px', paddingTop: '20px', borderTop: '1px solid var(--grey)' }}>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(245,240,232,0.22)' }}>
+                    {formatMonthYear(post.published_at)}
+                  </span>
+                  <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--orange)' }}>
+                    Read →
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* ── FOOTER NOTE ── */}
-      <section
-        style={{
-          padding: '64px var(--pad)',
-          textAlign: 'center',
-        }}
-      >
-        <p
-          style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: '13px',
-            fontWeight: 300,
-            color: 'rgba(245,240,232,0.35)',
-          }}
-        >
+      <section style={{ padding: '64px var(--pad)', textAlign: 'center' }}>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 300, color: 'rgba(245,240,232,0.35)' }}>
           Questions or corrections?{' '}
           <Link href="/#contact" style={{ color: 'var(--orange)', textDecoration: 'none' }}>
             Get in touch

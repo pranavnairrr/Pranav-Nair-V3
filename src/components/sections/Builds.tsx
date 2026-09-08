@@ -1,9 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import { builds } from '@/lib/builds';
 import SectionLabel from '@/components/ui/SectionLabel';
 import RevealWrapper from '@/components/ui/RevealWrapper';
-import ScreenshotThumb from '@/components/ui/ScreenshotThumb';
 
 export default function Builds() {
   return (
@@ -30,7 +30,7 @@ export default function Builds() {
         .build-thumb-wrap {
           position: relative;
           width: 100%;
-          aspect-ratio: 16 / 10;
+          aspect-ratio: 900 / 420;
           background: #111;
           overflow: hidden;
           border-bottom: 1px solid var(--grey);
@@ -85,7 +85,13 @@ export default function Builds() {
                 className="build-card"
               >
                 <div className="build-thumb-wrap">
-                  <ScreenshotThumb url={b.url} alt={`${b.title} — screenshot`} />
+                  <Image
+                    src={b.thumbnail}
+                    alt={`${b.title} — screenshot`}
+                    fill
+                    sizes="(max-width: 860px) 100vw, 33vw"
+                    style={{ objectFit: 'cover', objectPosition: 'top' }}
+                  />
                 </div>
                 <div style={{ padding: '24px 26px' }}>
                   <span

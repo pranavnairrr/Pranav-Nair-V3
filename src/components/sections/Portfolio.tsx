@@ -1,7 +1,7 @@
+import Image from 'next/image';
 import { portfolioItems } from '@/lib/portfolio';
 import SectionLabel from '@/components/ui/SectionLabel';
 import RevealWrapper from '@/components/ui/RevealWrapper';
-import ScreenshotThumb from '@/components/ui/ScreenshotThumb';
 
 export default function Portfolio() {
   return (
@@ -34,7 +34,7 @@ export default function Portfolio() {
         .port-thumb-wrap {
           position: relative;
           width: 100%;
-          aspect-ratio: 16 / 9;
+          aspect-ratio: 900 / 420;
           background: #111;
           overflow: hidden;
           border-bottom: 1px solid var(--grey);
@@ -114,7 +114,13 @@ export default function Portfolio() {
                 }}
               >
                 <div className="port-thumb-wrap">
-                  <ScreenshotThumb url={item.href} alt={`${item.title.replace('\n', ' ')} — preview`} />
+                  <Image
+                    src={item.thumbnail}
+                    alt={`${item.title.replace('\n', ' ')} — preview`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    style={{ objectFit: 'cover', objectPosition: 'top' }}
+                  />
                 </div>
 
                 <div style={{ padding: 'clamp(28px, 3.5vw, 40px) clamp(24px, 3.5vw, 40px)' }}>

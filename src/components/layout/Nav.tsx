@@ -28,6 +28,8 @@ export default function Nav() {
   // Close menu on route change
   useEffect(() => { setMenuOpen(false); }, [pathname]);
 
+  if (pathname?.startsWith('/admin')) return null;
+
   return (
     <>
       <style>{`
