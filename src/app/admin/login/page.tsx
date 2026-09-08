@@ -10,6 +10,8 @@ export default function AdminLoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [mode, setMode] = useState<'signin' | 'reset'>('signin');
+  const [resetStatus, setResetStatus] = useState<string | null>(null);
 
   useEffect(() => {
     if (!supabase) return;
@@ -35,6 +37,23 @@ export default function AdminLoginPage() {
     router.replace('/admin');
   }
 
+  async function handleReset(e: React.FormEvent) {
+    e.preventDefault();
+    setError(null);
+    setResetStatus(null);
+    if (!supabase || !email.trim()) return;
+    setLoading(true);
+    const { error: resetError } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+      redirectTo: `${window.location.origin}/admin/reset-password`,
+    });
+    setLoading(false);
+    if (resetError) {
+      setError(resetError.message);
+      return;
+    }
+    setResetStatus('If that email has an account, a reset link is on its way.');
+  }
+
   return (
     <main
       style={{
@@ -45,7 +64,7 @@ export default function AdminLoginPage() {
         padding: '48px 24px',
       }}
     >
-      <form onSubmit={handleSubmit} style={{ maxWidth: '340px', width: '100%' }}>
+      <div style={{ maxWidth: '340px', width: '100%' }}>
         <span
           style={{
             display: 'block',
@@ -68,42 +87,101 @@ export default function AdminLoginPage() {
             color: 'var(--white)',
           }}
         >
-          SIGN IN
+          {mode === 'signin' ? 'SIGN IN' : 'RESET PASSWORD'}
         </h1>
 
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          autoFocus
-          autoComplete="username"
-          style={inputStyle}
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          autoComplete="current-password"
-          style={{ ...inputStyle, marginTop: '10px' }}
-        />
+        {mode === 'signin' ? (
+          <form onSubmit={handleSubmit}>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              autoFocus
+              autoComplete="username"
+              style={inputStyle}
+            />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              autoComplete="current-password"
+              style={{ ...inputStyle, marginTop: '10px' }}
+            />
 
-        {error && (
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: '#c94a4a', marginTop: '12px' }}>
-            {error}
-          </p>
+            {error && (
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: '#c94a4a', marginTop: '12px' }}>
+                {error}
+              </p>
+            )}
+
+            <button
+              type="submit"
+              className="btn btn-orange"
+              disabled={loading}
+              style={{ width: '100%', textAlign: 'center', marginTop: '20px' }}
+            >
+              {loading ? 'Signing in…' : 'Sign In'}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                setMode('reset');
+                setError(null);
+              }}
+              style={forgotLinkStyle}
+            >
+              Forgot password?
+            </button>
+          </form>
+        ) : (
+          <form onSubmit={handleReset}>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              autoFocus
+              autoComplete="username"
+              style={inputStyle}
+            />
+
+            {error && (
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: '#c94a4a', marginTop: '12px' }}>
+                {error}
+              </p>
+            )}
+            {resetStatus && (
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: '#4a9e7a', marginTop: '12px' }}>
+                {resetStatus}
+              </p>
+            )}
+
+            <button
+              type="submit"
+              className="btn btn-orange"
+              disabled={loading}
+              style={{ width: '100%', textAlign: 'center', marginTop: '20px' }}
+            >
+              {loading ? 'Sending…' : 'Send Reset Link'}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                setMode('signin');
+                setError(null);
+                setResetStatus(null);
+              }}
+              style={forgotLinkStyle}
+            >
+              ← Back to sign in
+            </button>
+          </form>
         )}
-
-        <button
-          type="submit"
-          className="btn btn-orange"
-          disabled={loading}
-          style={{ width: '100%', textAlign: 'center', marginTop: '20px' }}
-        >
-          {loading ? 'Signing in…' : 'Sign In'}
-        </button>
-      </form>
+      </div>
     </main>
   );
 }
@@ -117,4 +195,17 @@ const inputStyle: React.CSSProperties = {
   fontFamily: 'var(--font-body)',
   fontSize: '14px',
   outline: 'none',
+};
+
+const forgotLinkStyle: React.CSSProperties = {
+  display: 'block',
+  width: '100%',
+  textAlign: 'center',
+  marginTop: '16px',
+  background: 'none',
+  border: 'none',
+  cursor: 'pointer',
+  fontFamily: 'var(--font-body)',
+  fontSize: '11px',
+  color: 'rgba(245,240,232,0.4)',
 };
