@@ -3,7 +3,7 @@ import { caseStudies } from '@/lib/caseStudies';
 import SectionLabel from '@/components/ui/SectionLabel';
 import RevealWrapper from '@/components/ui/RevealWrapper';
 
-const featuredSlugs = ['am-health-hub', 'macins-group', 'hdfc-securities', 'motilal-oswal'];
+const featuredSlugs = ['macins-group', 'aries-dental', 'hdfc-securities', 'motilal-oswal'];
 
 export default function CaseStudies() {
   const featured = featuredSlugs

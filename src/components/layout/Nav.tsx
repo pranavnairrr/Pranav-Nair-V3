@@ -176,7 +176,7 @@ export default function Nav() {
             className="btn btn-orange"
             style={{ fontSize: '10px', letterSpacing: '2px', padding: '10px 22px' }}
           >
-            Hire Me
+            Contact
           </a>
         </div>
 
@@ -216,7 +216,7 @@ export default function Nav() {
           className="btn btn-orange nav-mobile-hire"
           onClick={() => setMenuOpen(false)}
         >
-          Hire Me
+          Contact
         </a>
       </div>
     </>

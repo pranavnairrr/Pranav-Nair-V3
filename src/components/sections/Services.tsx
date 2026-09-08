@@ -116,7 +116,7 @@ export default function Services() {
               letterSpacing: '0.5px',
             }}
           >
-            Full-stack marketing. One strategic hire. Complete output.
+            Full-stack marketing, start to finish.
           </p>
         </RevealWrapper>
 

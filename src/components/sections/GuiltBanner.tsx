@@ -176,7 +176,7 @@ export default function GuiltBanner() {
                 marginBottom: '20px',
               }}
             >
-              ONE PERSON.{' '}
+              FULL STACK.{' '}
               <span style={{ color: 'var(--orange)' }}>FULL RESULTS.</span>
             </h2>
 

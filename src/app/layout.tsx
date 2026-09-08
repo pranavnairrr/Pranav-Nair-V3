@@ -28,9 +28,9 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: 'Pranav Nair — AI-Powered Marketing Strategist, Dubai',
+  title: 'Pranav Nair — Head of Marketing, AI-Powered Growth & Product Leader, Dubai',
   description:
-    'Dubai-based AI-Powered Marketing Strategist. Pranav Nair helps healthcare and luxury brands grow through brand strategy, content, and AI workflows.',
+    'Dubai-based Head of Marketing and AI-powered growth & product leader. Pranav Nair helps healthcare and luxury brands grow through brand strategy, performance marketing, and AI-assisted product/tech ownership.',
 };
 
 export default function RootLayout({
@@ -42,8 +42,8 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Pranav Nair',
-    jobTitle: 'AI-Powered Marketing Strategist',
-    description: 'Dubai-based AI-Powered Marketing Strategist helping healthcare and luxury brands grow through brand strategy, content, and AI workflows.',
+    jobTitle: 'Head of Marketing · AI-Powered Growth & Product Leader',
+    description: 'Dubai-based Head of Marketing and AI-powered growth & product leader helping healthcare and luxury brands grow through brand strategy, performance marketing, and AI-assisted product/tech ownership.',
     url: 'https://pranavnair.co',
     image: 'https://pranavnair.co/photo.png',
     email: 'ppranav18@gmail.com',

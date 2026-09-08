@@ -184,7 +184,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 marginTop: '2px',
               }}
             >
-              AI-Powered Marketing Strategist · Dubai, UAE
+              Head of Marketing · Dubai, UAE
             </div>
           </div>
         </div>

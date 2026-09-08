@@ -10,35 +10,6 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: 'how-i-built-am-health-hub-brand-from-zero',
-    title: 'How I Built AM Health Hub\'s Brand From Zero — And What I\'d Do Differently',
-    category: 'Case Study',
-    date: 'March 2026',
-    readTime: '7 min read',
-    excerpt:
-      'A full walkthrough of building a medical tourism brand from scratch — visual identity, content systems, social strategy — and the hard lessons learned along the way.',
-    body: `
-      <p>When I first started working with AM Health Hub, there was nothing. No logo system, no social presence, no content calendar, no tone of voice. Just a vision: build a platform that connects patients across 40+ countries to world-class medical care in Dubai.</p>
-
-      <h2>The Starting Point</h2>
-      <p>Most brands in the medical tourism space make the same mistake — they lead with procedures and prices. Clinical. Cold. Transactional. The brief was clear: this had to feel different. Premium. Trustworthy. Human.</p>
-
-      <h2>Building the Brand Architecture</h2>
-      <p>The first 30 days were spent entirely on strategy. Competitor analysis across UAE, India, Thailand, and Turkey markets. Patient persona mapping. Channel strategy. Brand voice documentation. Before a single piece of content was created, we had a complete brand bible.</p>
-      <p>The visual identity system came next — colour palette, typography, photography direction, template library. Everything designed to work across Instagram, LinkedIn, WhatsApp, and web simultaneously.</p>
-
-      <h2>The Content Engine</h2>
-      <p>30+ pieces of content per month, consistently, without a team — this is where AI changed everything. I used Claude AI for copy ideation and refinement, Midjourney for concept visuals, Canva AI for rapid template production, and CapCut AI for reel editing. What would have taken a 4-person team was handled by one person with an AI stack.</p>
-
-      <h2>What I'd Do Differently</h2>
-      <p>Start SEO earlier. The content was excellent, but it took months to build search presence that could have been accelerated with better keyword architecture from day one. Every piece of content should have been written with a target keyword in mind from the start.</p>
-      <p>Also: build the email list in parallel. Social media algorithms are unpredictable. An owned audience is the only truly stable distribution channel.</p>
-
-      <h2>The Result</h2>
-      <p>A brand that looks and feels like a serious, internationally credible medical platform — because it is. From zero to a fully operational content machine in under 90 days.</p>
-    `,
-  },
-  {
     slug: 'why-luxury-real-estate-content-needs-a-different-strategy',
     title: 'Why Luxury Real Estate Content Needs a Completely Different Strategy',
     category: 'Strategy',
@@ -69,20 +40,19 @@ export const blogPosts: BlogPost[] = [
     `,
   },
   {
-    slug: 'my-ai-workflow-for-managing-4-clients-as-one-person',
-    title: 'My AI Workflow for Managing 4 Clients as One Person',
+    slug: 'my-ai-workflow-for-managing-multiple-clients',
+    title: 'My AI Workflow for Managing Multiple Clients',
     category: 'AI & Productivity',
     date: 'January 2026',
     readTime: '6 min read',
     excerpt:
-      'How I use Claude AI, ChatGPT, Midjourney, CapCut AI, and Make.com to deliver full-team marketing output across four simultaneous client accounts — without burning out.',
+      'How I use Claude AI, ChatGPT, Midjourney, CapCut AI, and Make.com to deliver high-output marketing across simultaneous client accounts — without burning out.',
     body: `
-      <p>4 clients. 4 different industries. 4 different brand voices. 30+ pieces of content each per month. 1 person. This is not sustainable without systems — and those systems are now largely AI-powered.</p>
+      <p>Multiple clients. Different industries. Different brand voices. 30+ pieces of content each, every month. Consistent output at that volume isn't sustainable without systems — and those systems are now largely AI-powered.</p>
 
       <h2>The Stack</h2>
-      <p>Here's every tool in the workflow and exactly what it does:</p>
       <ul>
-        <li><strong>Claude AI</strong> — Strategy documents, long-form copy, campaign briefs, brand voice calibration. The thinking tool.</li>
+        <li><strong>Claude AI</strong> — Strategy documents, long-form copy, campaign briefs, brand voice calibration.</li>
         <li><strong>ChatGPT</strong> — Rapid caption variations, hashtag research, quick ideation sessions.</li>
         <li><strong>Midjourney</strong> — Concept visuals, moodboards, creative direction references.</li>
         <li><strong>Canva AI</strong> — Template production at scale, brand kit application, Magic Resize for cross-platform adaptation.</li>
@@ -92,16 +62,18 @@ export const blogPosts: BlogPost[] = [
       </ul>
 
       <h2>The Weekly Rhythm</h2>
-      <p>Monday: Strategy and planning session for all 4 clients. Claude AI generates the weekly content briefs based on brand guidelines and current campaign objectives.</p>
-      <p>Tuesday–Wednesday: Content production. Canva templates + Midjourney visuals + AI-assisted copy. Everything produced in batches, not one-by-one.</p>
-      <p>Thursday: Client review and approval. Make.com automation handles the feedback loop.</p>
-      <p>Friday: Scheduling and the following week's brief prep.</p>
+      <ul>
+        <li><strong>Monday</strong> — Strategy and planning. Claude AI generates weekly content briefs based on brand guidelines and current campaign objectives.</li>
+        <li><strong>Tuesday–Wednesday</strong> — Content production, in batches. Canva templates, Midjourney visuals, AI-assisted copy.</li>
+        <li><strong>Thursday</strong> — Client review and approval, with Make.com handling the feedback loop.</li>
+        <li><strong>Friday</strong> — Scheduling and the following week's brief prep.</li>
+      </ul>
 
       <h2>The Non-Negotiable</h2>
       <p>AI handles speed. Strategy is still human. Every piece of content is reviewed for brand alignment, strategic intent, and quality before it goes out. The AI compresses the production timeline — it doesn't replace judgement.</p>
 
       <h2>The Result</h2>
-      <p>What used to require a 4-5 person team now runs as one person + an AI stack. Not at reduced quality — at higher quality, because more time goes into strategy and less into production admin.</p>
+      <p>The AI stack compresses what used to take a much larger production process. Not at reduced quality — at higher quality, because more time goes into strategy and less into admin.</p>
     `,
   },
 ];

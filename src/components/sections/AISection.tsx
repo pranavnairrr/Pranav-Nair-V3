@@ -26,7 +26,7 @@ const aiCards = [
   {
     icon: '📈',
     title: 'Better ROI',
-    desc: 'More output per dirham. One strategic hire delivering full marketing team results.',
+    desc: 'More output per dirham. Full marketing team results, without the overhead.',
   },
   {
     icon: '🔄',
@@ -115,8 +115,8 @@ export default function AISection() {
             }}
           >
             While most marketers are still figuring out AI, I&apos;ve already built it into every
-            part of my workflow. Campaigns that used to take 2 weeks get done in 3 days. Content
-            that required a full team — delivered by one person, without cutting corners.
+            part of my workflow. Campaigns that used to take 2 weeks get done in 3 days, without
+            cutting corners.
           </p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>

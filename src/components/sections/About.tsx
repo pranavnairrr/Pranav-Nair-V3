@@ -2,18 +2,18 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import RevealWrapper from '@/components/ui/RevealWrapper';
 
 const stats = [
-  { value: '9+', label: 'Years Experience' },
+  { value: '8+', label: 'Years Experience' },
   { value: '15+', label: 'Brands Built' },
   { value: '4', label: 'Industries Served' },
 ];
 
 const tags = [
-  'Certified Data Scientist',
+  'Data Science',
   'Google Analytics',
   'Google Ads',
   'Meta Ads',
+  'CRM & MarTech',
   'Video Production',
-  'Brand Identity',
   'AI Marketing',
 ];
 
@@ -130,10 +130,11 @@ export default function About() {
                 color: 'rgba(245,240,232,0.65)',
               }}
             >
-              I&apos;m a Dubai-based AI-Powered Marketing Strategist with 9+ years of experience
-              building brands from zero — content, creative, campaigns, and everything in between.
-              Started as a media specialist, mastered the full stack, evolved into a strategist who
-              delivers full-team output as one person.
+              I&apos;m a Dubai-based Head of Marketing with 8+ years of experience spanning growth
+              strategy, performance marketing, and hands-on product/tech ownership. Started in
+              branch marketing and growth roles, evolved into a strategist who builds the MarTech
+              that powers marketing — CRMs, websites, and high-converting landing pages — using
+              modern AI-assisted tools.
             </p>
             <p
               style={{
@@ -144,10 +145,9 @@ export default function About() {
                 color: 'rgba(245,240,232,0.65)',
               }}
             >
-              I currently manage digital marketing across AM Health Hub, Aries Dental &amp; Aesthetic,
-              Aries Group, and Macins Group — brand identity, social media, content operations, and
-              creative direction simultaneously across healthcare, wellness, and construction sectors
-              in Dubai.
+              I currently own full-funnel marketing strategy and execution across five business
+              units at Aries Group &amp; Macins Group — spanning healthcare, aesthetics, real estate,
+              and construction — reporting directly to founders and leadership.
             </p>
             <p
               style={{

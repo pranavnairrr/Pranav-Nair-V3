@@ -6,11 +6,10 @@ import SectionLabel from '@/components/ui/SectionLabel';
 export const metadata: Metadata = {
   title: 'Case Studies — Pranav Nair',
   description:
-    'Case studies from my work with AM Health Hub, Macins Group, HDFC Securities, Motilal Oswal, Ventura Securities, Me-Hin Tech, Storyfactory, and more.',
+    'Case studies from my work with Macins Group, HDFC Securities, Motilal Oswal, Ventura Securities, Me-Hin Tech, Storyfactory, and more.',
 };
 
 const primarySlugs = [
-  'am-health-hub',
   'macins-group',
   'hdfc-securities',
   'motilal-oswal',
@@ -18,6 +17,7 @@ const primarySlugs = [
   'me-hin-tech',
   'storyfactory',
   'moins-view',
+  'aries-dental',
 ];
 
 export default function WorkIndexPage() {

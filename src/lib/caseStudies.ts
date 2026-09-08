@@ -21,40 +21,17 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
-    id: 'am-health-hub',
-    slug: 'am-health-hub',
-    num: '01',
-    tag: 'Google Ads · Paid Search · Medical Tourism · Dubai, UAE',
-    title: 'AM Health Hub — Growth Engine',
-    brief:
-      'From no digital presence to a functioning lead pipeline serving patients across Nigeria and Africa — a cost per submission of $29, 569 total conversions, and $16,465 in total spend. Built the full infrastructure: website, measurement stack, campaigns, CRM pipeline, and intake process.',
-    strategy:
-      'Sequenced the build correctly: website and tracking infrastructure before any ads. One clean conversion action (confirmation page view), everything routed through GTM. Three-tier keyword architecture — high-intent procedural, condition-awareness, and geographic-intent terms — with a pre-launch negative keyword list to protect budget from day one.',
-    execution:
-      'Six intent-segmented campaigns launched August 2025. Six-week audit uncovered Quality Score 5.74, mobile LCP 5.4s, keyword cannibalization, and 68% impression share lost to quality. Full rebuild: WebP images + lazy loading cut LCP to 1.9s; campaign consolidation eliminated cannibalization; ad copy rewrite pushed QS to 7.9; tCPA smart bidding introduced after 30+ conversions per campaign. 180+ negative keywords added. Odoo CRM implemented to track full patient pipeline post-submission. Intake process redesigned around patient behaviour to reduce drop-off.',
-    results: [
-      { metric: 'Cost Per Submission', before: '$120+ (early campaigns)', after: '$29 blended' },
-      { metric: 'Quality Score', before: '5.74 average', after: '7.9 average' },
-      { metric: 'Mobile LCP', before: '5.4s — Poor', after: '1.9s — Good' },
-      { metric: 'Impression Share Lost', before: '68%', after: '11%' },
-      { metric: 'Total Conversions', before: '0', after: '569' },
-      { metric: 'Campaigns Budget-Limited', before: '6 of 6', after: '0 of 5' },
-    ],
-    resultPill: '$29 CPA · 569 Conversions · Growth Engine Built',
-    logo: '/logos/AM Health.png',
-  },
-  {
     id: 'macins-group',
     slug: 'macins-group',
-    num: '02',
+    num: '01',
     tag: 'Conglomerate · Multi-Sector · UAE + Global',
     title: 'Macins Group — Multi-Sector Content',
     brief:
-      "Created and managed digital marketing for Macins Group — UAE's fastest-growing conglomerate spanning 10+ sectors.",
+      "Working closely with Macins Group's leadership, we built and manage digital marketing for UAE's fastest-growing conglomerate spanning 10+ sectors.",
     strategy:
-      'Multi-sector content strategy that maintains brand coherence across wildly different business units — construction, real estate, EV, MEP.',
+      "Guided by the leadership's vision for the group, we developed a multi-sector content strategy that maintains brand coherence across wildly different business units — construction, real estate, EV, MEP.",
     execution:
-      'Brand positioning content, social media, campaign materials for full portfolio across UAE, India, KSA, Qatar.',
+      'Together with the team, we deliver brand positioning content, social media, and campaign materials for the full portfolio across UAE, India, KSA, Qatar.',
     results: [
       { metric: 'Sectors Covered', before: 'Inconsistent', after: '10+ sectors unified' },
       { metric: 'Geographic Reach', before: 'Local', after: 'UAE·India·KSA·Qatar' },
@@ -66,15 +43,15 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'hdfc-securities',
     slug: 'hdfc-securities',
-    num: '03',
-    tag: 'Broking · Stock Market · Financial Services',
-    title: 'HDFC Securities — Financial Content',
+    num: '02',
+    tag: 'Growth & Area Management · Stock Broking · Financial Services',
+    title: 'HDFC Securities — Regional Growth & Team Leadership',
     brief:
-      'Content strategy and digital marketing for HDFC Securities — one of India\'s leading stock broking firms. Built investor-focused content that simplifies complex financial products.',
+      "Growth Manager & Area Head owning brand visibility and growth marketing across 71 branches in Ernakulam District — corporate account acquisition, team leadership, and large-scale staff training.",
     strategy:
-      'Investor education content, product explainers, and campaign creatives tailored for retail and HNI audiences.',
+      'Aligned local marketing execution with compliance and operational standards region-wide, while building corporate acquisition and partnership pipelines across retail, hospitality, and healthcare sectors.',
     execution:
-      'Social media content, campaign materials, investor guides, product communications across digital channels.',
+      'Managed and mentored a 25-person regional team, built performance monitoring systems to track marketing and operational KPIs, and delivered training programs for 800+ staff across 71 branches.',
     results: [],
     resultPill: 'Case Study Coming Soon',
     logo: '/logos/Hdfc.png',
@@ -83,15 +60,15 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'motilal-oswal',
     slug: 'motilal-oswal',
-    num: '04',
-    tag: 'Wealth Management · Equity Research · Broking',
-    title: 'Motilal Oswal — Wealth & Equity Content',
+    num: '03',
+    tag: 'Branch Marketing & Sales Management · Wealth Management · Broking',
+    title: 'Motilal Oswal — Branch Marketing & Team Leadership',
     brief:
-      'Digital content and marketing for Motilal Oswal — a premier wealth management and equity research brand. Focused on building trust with high-net-worth investors.',
+      'Branch Marketing & Sales Manager leading day-to-day marketing, sales, and administrative functions for the Kerala regional branch — managing two teams, including a team leader and a 40-member RM team.',
     strategy:
-      'Premium content positioning that communicates research depth and wealth management expertise to sophisticated investors.',
+      'Offline and local marketing to establish and strengthen local brand presence, while ensuring streamlined operations and compliance with organisational protocols.',
     execution:
-      'Social media strategy, campaign creatives, investor communications, equity research content packaging.',
+      'Supervised and guided staff to improve operational efficiency and support professional development across the branch.',
     results: [],
     resultPill: 'Case Study Coming Soon',
     logo: '/logos/Motilal.jpg',
@@ -100,15 +77,15 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'ventura-securities',
     slug: 'ventura-securities',
-    num: '05',
-    tag: 'Broking · Financial Services · Retail Investing',
-    title: 'Ventura Securities — Retail Broking Content',
+    num: '04',
+    tag: 'Client Onboarding & Compliance · Broking · Financial Services',
+    title: 'Ventura Securities — Client Onboarding & Branch Operations',
     brief:
-      'Content creation and digital marketing for Ventura Securities — a trusted broking platform serving retail and institutional investors across India.',
+      'Marketing Representative managing client onboarding and compliance documentation for Ventura Securities, ensuring regulatory adherence across the branch.',
     strategy:
-      'Accessible, trust-building content for retail investors. Clear communication of complex financial products and market insights.',
+      'Supported branch administration and operational workflow optimisation to keep day-to-day functions running smoothly.',
     execution:
-      'Social media content, investor education campaigns, product launch creatives, digital brand communications.',
+      'Coordinated administrative functions including facility maintenance, documentation, and resource allocation.',
     results: [],
     resultPill: 'Case Study Coming Soon',
     logo: '/logos/Ventura.png',
@@ -117,15 +94,15 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'me-hin-tech',
     slug: 'me-hin-tech',
-    num: '06',
-    tag: 'Tech · Digital Solutions · B2B',
-    title: 'Me-Hin Tech Edge Solutions',
+    num: '05',
+    tag: 'Marketing Operations · Tech · Digital Solutions · B2B',
+    title: 'Me-Hin Tech Edge Solutions — Marketing Operations',
     brief:
-      'Brand building and content strategy for Me-Hin Tech Edge Solutions — a technology company delivering digital transformation solutions for businesses.',
+      'Marketing Manager overseeing marketing team operations for Me-Hin Tech Edge Solutions, a technology company delivering digital transformation solutions for businesses.',
     strategy:
-      'Positioned Me-Hin as a credible B2B tech partner through thought leadership content and clear product communication.',
+      'Supported creative ideation for investor-focused video newsletters and product walkthroughs, and coordinated communication between sales representatives and management for operational efficiency.',
     execution:
-      'Brand identity, digital content, case study production, LinkedIn strategy, and B2B campaign materials.',
+      'Oversaw sales data collection and reporting to streamline performance tracking, provided administrative support to sales teams, and assisted in sales team training and performance monitoring.',
     results: [],
     resultPill: 'Case Study Coming Soon',
     comingSoon: true,
@@ -133,7 +110,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'storyfactory',
     slug: 'storyfactory',
-    num: '07',
+    num: '06',
     tag: 'YouTube · Content Creation · Video Strategy',
     title: 'Storyfactory — YouTube Channel',
     brief:
@@ -149,7 +126,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'moins-view',
     slug: 'moins-view',
-    num: '08',
+    num: '07',
     tag: 'YouTube · Commentary · Content Strategy',
     title: "Moin's View — YouTube Channel",
     brief:
@@ -165,15 +142,15 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'aries-dental',
     slug: 'aries-dental',
-    num: '09',
+    num: '08',
     tag: 'Premium Clinic · Content · Social Media · JBR Dubai',
     title: 'Aries Dental — Premium Brand Presence',
     brief:
-      'Managed content creation and social media strategy for Aries Dental & Aesthetic at JBR — one of Dubai\'s top-rated aesthetic clinics.',
+      "Working with Aries Dental & Aesthetic's leadership, we manage content creation and social media strategy for one of Dubai's top-rated aesthetic clinics at JBR.",
     strategy:
-      "Built aspirational, premium content system matching the clinic's 5-star experience. Healthcare-forward visual language with luxury execution.",
+      "Guided by the clinic's leadership and their vision for a 5-star patient experience, we built an aspirational, premium content system — healthcare-forward visual language with luxury execution.",
     execution:
-      '5-star social content, procedure showcases, patient journey content, clinic atmosphere visuals, campaign creatives.',
+      'As a team, we produce 5-star social content, procedure showcases, patient journey content, clinic atmosphere visuals, and campaign creatives.',
     results: [
       { metric: 'Brand Positioning', before: 'Generic clinic', after: '5-Star premium' },
       { metric: 'Content Quality', before: 'Inconsistent', after: 'Editorial grade' },

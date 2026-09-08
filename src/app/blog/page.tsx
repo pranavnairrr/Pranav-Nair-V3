@@ -5,7 +5,7 @@ import { blogPosts } from '@/lib/blog';
 export const metadata: Metadata = {
   title: 'Insights — Pranav Nair',
   description:
-    'Marketing strategy, AI workflows, and brand building — written by Pranav Nair, Dubai-based AI-Powered Marketing Strategist.',
+    'Marketing strategy, AI workflows, and brand building — written by Pranav Nair, Dubai-based Head of Marketing.',
 };
 
 export default function BlogPage() {

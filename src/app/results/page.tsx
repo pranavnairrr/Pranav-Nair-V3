@@ -5,23 +5,10 @@ import { clients } from '@/lib/clients';
 export const metadata: Metadata = {
   title: 'Proof — Pranav Nair',
   description:
-    'Real results from real brands. Before/after metrics, campaign outcomes, and brand transformations — documented by Pranav Nair, Dubai-based Marketing Strategist.',
+    'Real results from real brands. Before/after metrics, campaign outcomes, and brand transformations — documented by Pranav Nair, Dubai-based Head of Marketing.',
 };
 
 const clientResults = [
-  {
-    id: 'am-health-hub',
-    name: 'AM HEALTH HUB',
-    industry: 'Healthcare · Medical Tourism',
-    metrics: [
-      { label: 'Social Presence', before: 'Zero', after: 'Active multi-platform' },
-      { label: 'Monthly Content Output', before: '0 pieces', after: '30+ pieces' },
-      { label: 'Brand System', before: 'None', after: 'Full visual identity' },
-      { label: 'Inquiry Channels', before: 'Word of mouth only', after: 'Social + web + email' },
-      { label: 'Content Consistency', before: 'Non-existent', after: 'Daily calendar' },
-    ],
-    pill: 'Built from zero',
-  },
   {
     id: 'aries-dental',
     name: 'ARIES DENTAL & AESTHETIC',
@@ -121,7 +108,7 @@ export default function ResultsPage() {
             marginTop: '32px',
           }}
         >
-          Not case study templates. Not hypothetical projections. These are the actual before/after outcomes from brands I&apos;ve built and managed — documented and updated as results compound.
+          Not case study templates. Not hypothetical projections. These are the actual before/after outcomes we&apos;ve delivered together with great leadership teams — documented and updated as results compound.
         </p>
       </section>
 

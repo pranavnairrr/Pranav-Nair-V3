@@ -31,23 +31,10 @@ export default function Hero() {
           animation: fadeUp 0.9s ease forwards;
           animation-delay: 0.7s;
         }
-        .hero-avail {
-          opacity: 0;
-          animation: fadeIn 1s ease forwards;
-          animation-delay: 0.2s;
-        }
         .hero-img-wrap {
           opacity: 0;
           animation: scaleIn 1.1s ease forwards;
           animation-delay: 0.3s;
-        }
-        .avail-dot {
-          width: 8px;
-          height: 8px;
-          background: #22c55e;
-          border-radius: 50%;
-          animation: blink 2s ease-in-out infinite;
-          flex-shrink: 0;
         }
         .hero-badge {
           animation: float 4s ease-in-out infinite;
@@ -112,31 +99,6 @@ export default function Hero() {
             borderRight: '1px solid var(--grey)',
           }}
         >
-          {/* Availability */}
-          <div
-            className="hero-avail"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              marginBottom: '36px',
-            }}
-          >
-            <div className="avail-dot" />
-            <span
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: '10px',
-                fontWeight: 400,
-                letterSpacing: '2.5px',
-                textTransform: 'uppercase',
-                color: 'rgba(245,240,232,0.45)',
-              }}
-            >
-              Available for new projects
-            </span>
-          </div>
-
           {/* Name */}
           <div style={{ lineHeight: 0.88, marginBottom: '24px' }}>
             <div
@@ -174,7 +136,7 @@ export default function Hero() {
                 letterSpacing: '0.5px',
               }}
             >
-              AI-Powered Marketing Strategist
+              Head of Marketing · AI-Powered Growth &amp; Product Leader
             </span>
           </div>
 
@@ -192,7 +154,8 @@ export default function Hero() {
             }}
           >
             Dubai-based. AI-powered. Full-stack strategist delivering brand identity,
-            content, and performance campaigns — as one person, at full-team speed.
+            content, performance campaigns, and the MarTech that powers them — from strategy
+            through execution.
           </p>
 
           {/* CTAs */}
@@ -262,7 +225,7 @@ export default function Hero() {
                 color: 'var(--orange)',
               }}
             >
-              9+
+              8+
             </div>
             <div
               style={{
