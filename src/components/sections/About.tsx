@@ -158,7 +158,7 @@ export default function About() {
               }}
             >
               Not a pitch for freelance work — this is a record of what&apos;s being learned along
-              the way: the systems, the campaigns, the tools. Documented and given away for free.
+              the way: the systems, the campaigns, the tools.
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '8px' }}>

@@ -44,7 +44,7 @@ export const experience: ExperienceEntry[] = [
     slug: 'hdfc-securities',
     num: '02',
     company: 'HDFC Securities Limited',
-    role: 'Growth Manager | Area Head',
+    role: 'Area Head | Growth Manager',
     period: 'May 2023 — Jan 2025',
     location: 'Ernakulam District, India',
     summary:

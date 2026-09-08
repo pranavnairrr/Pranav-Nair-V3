@@ -36,7 +36,7 @@ export default function Contact() {
             }}
           >
             Happy to talk shop, compare notes, or answer a question about anything on this
-            site. Reach me here — no forms, no funnels.
+            site. Reach me here.
           </p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>

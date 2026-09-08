@@ -155,7 +155,7 @@ export default function Hero() {
             }}
           >
             Head of Marketing at Aries Group &amp; Macins Group, Dubai. Documenting growth,
-            product, and using AI to do more with less — shared for free.
+            product, and using AI to do more with less.
           </p>
 
           {/* CTAs */}
