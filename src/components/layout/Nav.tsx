@@ -5,11 +5,11 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
 const navLinks = [
-  { label: 'Work', href: '/work' },
+  { label: 'Experience', href: '/work' },
   { label: 'About', href: '/#about' },
-  { label: 'Services', href: '/#services' },
+  { label: 'Skills', href: '/#services' },
+  { label: 'Builds', href: '/#builds' },
   { label: 'Blog', href: '/blog' },
-  { label: 'Results', href: '/results' },
   { label: 'Podcast', href: '/podcast' },
   { label: 'Contact', href: '/#contact' },
 ];
@@ -102,11 +102,6 @@ export default function Nav() {
         .nav-mobile-link:last-of-type { border-bottom: none; }
         .nav-mobile-link:hover,
         .nav-mobile-link.active { color: var(--orange); }
-        .nav-mobile-hire {
-          margin-top: 16px;
-          display: block;
-          text-align: center;
-        }
         @media (max-width: 860px) {
           .nav-links-desktop { display: none !important; }
           .nav-hamburger { display: flex !important; }
@@ -170,14 +165,6 @@ export default function Nav() {
               </Link>
             );
           })}
-
-          <a
-            href="mailto:ppranav18@gmail.com"
-            className="btn btn-orange"
-            style={{ fontSize: '10px', letterSpacing: '2px', padding: '10px 22px' }}
-          >
-            Contact
-          </a>
         </div>
 
         {/* Hamburger */}
@@ -211,13 +198,6 @@ export default function Nav() {
             </Link>
           );
         })}
-        <a
-          href="mailto:ppranav18@gmail.com"
-          className="btn btn-orange nav-mobile-hire"
-          onClick={() => setMenuOpen(false)}
-        >
-          Contact
-        </a>
       </div>
     </>
   );

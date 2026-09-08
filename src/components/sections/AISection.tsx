@@ -15,7 +15,7 @@ const aiTools = [
 const aiCards = [
   {
     icon: '⚡',
-    title: '10x Speed',
+    title: 'Faster Delivery',
     desc: 'Deliverables in days not weeks. AI handles the heavy lifting while strategy stays sharp.',
   },
   {
@@ -25,8 +25,8 @@ const aiCards = [
   },
   {
     icon: '📈',
-    title: 'Better ROI',
-    desc: 'More output per dirham. Full marketing team results, without the overhead.',
+    title: 'Leaner Overhead',
+    desc: 'More output without more headcount — sharper execution, less waste.',
   },
   {
     icon: '🔄',
@@ -114,9 +114,8 @@ export default function AISection() {
               maxWidth: '480px',
             }}
           >
-            While most marketers are still figuring out AI, I&apos;ve already built it into every
-            part of my workflow. Campaigns that used to take 2 weeks get done in 3 days, without
-            cutting corners.
+            I&apos;ve built AI into every part of how I work — research, production, reporting.
+            Here&apos;s the stack, documented as I use it, not as a pitch.
           </p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>

@@ -389,14 +389,14 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               maxWidth: '380px',
             }}
           >
-            This is how I think. Imagine what I can do for your brand. Let&apos;s build something that actually works.
+            More of what I&apos;m learning, written down as I go.
           </p>
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <Link href="/#contact" className="btn btn-orange">
-              Start a Project
-            </Link>
             <Link href="/blog" className="btn btn-outline">
               More Articles
+            </Link>
+            <Link href="/work" className="btn btn-outline">
+              See Experience
             </Link>
           </div>
         </div>

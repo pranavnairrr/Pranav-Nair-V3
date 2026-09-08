@@ -1,31 +1,31 @@
 import SectionLabel from '@/components/ui/SectionLabel';
 import RevealWrapper from '@/components/ui/RevealWrapper';
 
-const services = [
+const skills = [
   {
     num: '01',
     title: 'Brand Strategy',
-    desc: 'Complete brand identity — positioning, visual system, tone of voice, and go-to-market plan. Built from scratch to market-ready.',
+    desc: 'Positioning, visual system, tone of voice, go-to-market planning.',
   },
   {
     num: '02',
-    title: 'Content Creation',
-    desc: 'Reels, posters, campaigns, copy — high-volume creative output with a sharp strategic layer. Consistent. On-brand. Always.',
+    title: 'Content & Creative',
+    desc: 'Reels, posters, campaigns, copy — high-volume creative output with a strategic layer underneath.',
   },
   {
     num: '03',
     title: 'Google & Meta Ads',
-    desc: 'Performance campaigns that convert. Keyword strategy, audience targeting, creative testing, and budget optimization.',
+    desc: 'Keyword strategy, audience targeting, creative testing, Quality Score and CAC optimization.',
   },
   {
     num: '04',
-    title: 'Social Media Management',
-    desc: 'Multi-platform presence that grows. Content calendars, community management, and growth systems that compound.',
+    title: 'CRM & MarTech',
+    desc: 'Designing and shipping the systems marketing runs on — CRMs, websites, landing pages, automation.',
   },
   {
     num: '05',
-    title: 'AI-Powered Marketing',
-    desc: 'AI integrated into every workflow — faster delivery, smarter campaigns, better ROI for every dirham you spend.',
+    title: 'AI-Assisted Workflows',
+    desc: 'AI built into research, production, and reporting — used to move faster, not to cut corners.',
   },
 ];
 
@@ -102,9 +102,9 @@ export default function Services() {
         }}
       >
         <RevealWrapper>
-          <SectionLabel>What I Do</SectionLabel>
+          <SectionLabel>Areas of Focus</SectionLabel>
           <h2 className="sec-title" style={{ marginBottom: '12px' }}>
-            WHAT I DO
+            WHAT I WORK ON
           </h2>
           <p
             style={{
@@ -116,15 +116,15 @@ export default function Services() {
               letterSpacing: '0.5px',
             }}
           >
-            Full-stack marketing, start to finish.
+            The full stack, end to end — strategy through execution.
           </p>
         </RevealWrapper>
 
         <RevealWrapper delay={0.15}>
           <div className="services-grid">
-            {services.map((svc) => (
+            {skills.map((skill) => (
               <div
-                key={svc.num}
+                key={skill.num}
                 className="svc"
                 style={{
                   background: 'var(--black)',
@@ -132,7 +132,7 @@ export default function Services() {
                   cursor: 'default',
                 }}
               >
-                <div className="svc-num">{svc.num}</div>
+                <div className="svc-num">{skill.num}</div>
                 <h3
                   style={{
                     fontFamily: 'var(--font-body)',
@@ -144,7 +144,7 @@ export default function Services() {
                     lineHeight: 1.4,
                   }}
                 >
-                  {svc.title}
+                  {skill.title}
                 </h3>
                 <p
                   style={{
@@ -155,7 +155,7 @@ export default function Services() {
                     color: 'rgba(245,240,232,0.32)',
                   }}
                 >
-                  {svc.desc}
+                  {skill.desc}
                 </p>
               </div>
             ))}

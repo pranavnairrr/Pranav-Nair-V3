@@ -77,7 +77,7 @@ export default function BlogPage() {
               maxWidth: '420px',
             }}
           >
-            Brand strategy, AI workflows, healthcare marketing, luxury real estate content — written from the front lines of doing it every day across four live client accounts in Dubai.
+            Brand strategy, AI workflows, healthcare marketing, luxury real estate content — written from the front lines of running marketing across five business units in Dubai.
           </p>
           <span
             style={{
@@ -236,40 +236,27 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
+      {/* ── FOOTER NOTE ── */}
       <section
         style={{
-          padding: '88px var(--pad)',
-          borderBottom: '1px solid var(--grey)',
+          padding: '64px var(--pad)',
           textAlign: 'center',
         }}
       >
-        <span
+        <p
           style={{
-            display: 'block',
             fontFamily: 'var(--font-body)',
-            fontSize: '10px',
-            letterSpacing: '4px',
-            textTransform: 'uppercase',
-            color: 'var(--orange)',
-            marginBottom: '20px',
+            fontSize: '13px',
+            fontWeight: 300,
+            color: 'rgba(245,240,232,0.35)',
           }}
         >
-          Work Together
-        </span>
-        <h2
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(40px, 5.5vw, 82px)',
-            lineHeight: 0.92,
-            marginBottom: '32px',
-          }}
-        >
-          READY TO BUILD <span style={{ color: 'var(--orange)' }}>SOMETHING?</span>
-        </h2>
-        <Link href="/#contact" className="btn btn-orange">
-          Let&apos;s Talk
-        </Link>
+          Questions or corrections?{' '}
+          <Link href="/#contact" style={{ color: 'var(--orange)', textDecoration: 'none' }}>
+            Get in touch
+          </Link>
+          .
+        </p>
       </section>
     </main>
   );

@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Hero() {
   return (
@@ -153,19 +154,18 @@ export default function Hero() {
               marginBottom: '36px',
             }}
           >
-            Dubai-based. AI-powered. Full-stack strategist delivering brand identity,
-            content, performance campaigns, and the MarTech that powers them — from strategy
-            through execution.
+            Head of Marketing at Aries Group &amp; Macins Group, Dubai. Documenting growth,
+            product, and using AI to do more with less — shared for free.
           </p>
 
           {/* CTAs */}
           <div className="hero-ctas" style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-            <a href="#portfolio" className="btn btn-orange">
-              View My Work
-            </a>
-            <a href="#contact" className="btn btn-outline">
-              Let&apos;s Talk
-            </a>
+            <Link href="/blog" className="btn btn-outline">
+              Read My Writing
+            </Link>
+            <Link href="/work" className="btn btn-outline">
+              See Experience
+            </Link>
           </div>
         </div>
 

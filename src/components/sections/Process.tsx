@@ -5,22 +5,22 @@ const steps = [
   {
     num: '01',
     title: 'Discovery & Audit',
-    desc: "I dig into your brand, competitors, and current marketing. What's working, what's wasting budget, and where the real opportunity is hiding.",
+    desc: "Start with a full audit — competitors, current channels, what's working and what's wasting budget. Find the real opportunity before touching anything.",
   },
   {
     num: '02',
     title: 'Strategy & Positioning',
-    desc: 'Full marketing strategy — messaging, channels, content pillars, and campaign roadmap. AI-assisted research, human-led strategic thinking.',
+    desc: 'Build the full strategy — messaging, channels, content pillars, campaign roadmap. AI-assisted research, human-led thinking.',
   },
   {
     num: '03',
     title: 'Execution at Speed',
-    desc: 'Content, creatives, ad campaigns — executed with AI tools that compress timelines without compressing quality or strategic intent.',
+    desc: 'Ship content, creative, and campaigns with AI tools that compress timelines without compressing quality.',
   },
   {
     num: '04',
     title: 'Optimize & Scale',
-    desc: "Data-driven iteration. What's working gets scaled. What isn't gets cut. Campaigns that compound and get better every week.",
+    desc: "Iterate on the data. Scale what works, cut what doesn't. Campaigns that compound and get better every week.",
   },
 ];
 

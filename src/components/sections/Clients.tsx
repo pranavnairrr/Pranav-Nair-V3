@@ -65,9 +65,9 @@ export default function Clients() {
         }}
       >
         <RevealWrapper>
-          <span className="sec-lbl">Current Clients</span>
+          <span className="sec-lbl">Companies I&apos;ve Worked With</span>
           <h2 className="sec-title" style={{ marginBottom: '48px' }}>
-            BRANDS I BUILD FOR
+            WHO I WORK WITH
           </h2>
         </RevealWrapper>
 

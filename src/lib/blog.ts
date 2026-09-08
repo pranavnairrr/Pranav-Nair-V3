@@ -16,12 +16,12 @@ export const blogPosts: BlogPost[] = [
     date: 'February 2026',
     readTime: '5 min read',
     excerpt:
-      'Luxury real estate is not sold — it is desired. The content strategy for a AED 10M property is fundamentally different from any other category, and most agencies get it wrong.',
+      'Luxury real estate is not sold — it is desired. The content strategy for an AED 10M property is fundamentally different from any other category, and most agencies get it wrong.',
     body: `
       <p>Most real estate content makes the same mistake: it leads with features. 4 bedrooms. 3 bathrooms. 2,400 sq ft. Private pool. Sea view. This is spec-sheet marketing, and it doesn't sell luxury property.</p>
 
       <h2>Luxury is an Emotion, Not a Feature List</h2>
-      <p>The buyer of a AED 10M+ property in Dubai is not making a spreadsheet decision. They are making an identity decision. The content has to answer one question: <em>Is this property consistent with who I am?</em></p>
+      <p>The buyer of an AED 10M+ property in Dubai is not making a spreadsheet decision. They are making an identity decision. The content has to answer one question: <em>Is this property consistent with who I am?</em></p>
       <p>That means the photography, the copy, the music in the reel, the pacing of the edit — all of it has to communicate status, taste, and aspiration before it communicates square footage.</p>
 
       <h2>The Channel Mix is Different</h2>
@@ -40,15 +40,15 @@ export const blogPosts: BlogPost[] = [
     `,
   },
   {
-    slug: 'my-ai-workflow-for-managing-multiple-clients',
-    title: 'My AI Workflow for Managing Multiple Clients',
+    slug: 'my-ai-workflow-for-managing-multiple-brands',
+    title: 'My AI Workflow for Managing Multiple Brands',
     category: 'AI & Productivity',
     date: 'January 2026',
     readTime: '6 min read',
     excerpt:
-      'How I use Claude AI, ChatGPT, Midjourney, CapCut AI, and Make.com to deliver high-output marketing across simultaneous client accounts — without burning out.',
+      'How I use Claude AI, ChatGPT, Midjourney, CapCut AI, and Make.com to deliver high-output marketing across five business units at once — without burning out.',
     body: `
-      <p>Multiple clients. Different industries. Different brand voices. 30+ pieces of content each, every month. Consistent output at that volume isn't sustainable without systems — and those systems are now largely AI-powered.</p>
+      <p>Five business units. Different industries. Different brand voices. 30+ pieces of content each, every month. Consistent output at that volume isn't sustainable without systems — and those systems are now largely AI-powered.</p>
 
       <h2>The Stack</h2>
       <ul>
@@ -58,14 +58,14 @@ export const blogPosts: BlogPost[] = [
         <li><strong>Canva AI</strong> — Template production at scale, brand kit application, Magic Resize for cross-platform adaptation.</li>
         <li><strong>CapCut AI</strong> — Reel editing, auto-captions, template-based video production.</li>
         <li><strong>Make.com</strong> — Automation flows: content approval → scheduling → reporting pipelines.</li>
-        <li><strong>Notion AI</strong> — Content calendar management, client briefing documents, campaign trackers.</li>
+        <li><strong>Notion AI</strong> — Content calendar management, brand briefing documents, campaign trackers.</li>
       </ul>
 
       <h2>The Weekly Rhythm</h2>
       <ul>
         <li><strong>Monday</strong> — Strategy and planning. Claude AI generates weekly content briefs based on brand guidelines and current campaign objectives.</li>
         <li><strong>Tuesday–Wednesday</strong> — Content production, in batches. Canva templates, Midjourney visuals, AI-assisted copy.</li>
-        <li><strong>Thursday</strong> — Client review and approval, with Make.com handling the feedback loop.</li>
+        <li><strong>Thursday</strong> — Stakeholder review and approval, with Make.com handling the feedback loop.</li>
         <li><strong>Friday</strong> — Scheduling and the following week's brief prep.</li>
       </ul>
 
@@ -73,7 +73,7 @@ export const blogPosts: BlogPost[] = [
       <p>AI handles speed. Strategy is still human. Every piece of content is reviewed for brand alignment, strategic intent, and quality before it goes out. The AI compresses the production timeline — it doesn't replace judgement.</p>
 
       <h2>The Result</h2>
-      <p>The AI stack compresses what used to take a much larger production process. Not at reduced quality — at higher quality, because more time goes into strategy and less into admin.</p>
+      <p>The AI stack has cut the time this used to take dramatically. Not at reduced quality — at higher quality, because more time goes into strategy and less into admin.</p>
     `,
   },
 ];

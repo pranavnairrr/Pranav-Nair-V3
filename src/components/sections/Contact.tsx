@@ -4,48 +4,27 @@ import RevealWrapper from '@/components/ui/RevealWrapper';
 
 export default function Contact() {
   return (
-    <>
-      <style>{`
-        .contact-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 80px;
-          align-items: center;
-        }
-        @media (max-width: 860px) {
-          .contact-grid {
-            grid-template-columns: 1fr !important;
-            gap: 40px !important;
-          }
-        }
-      `}</style>
-
-      <section
-        id="contact"
-        className="contact-grid"
-        style={{
-          padding: '80px var(--pad)',
-          borderBottom: '1px solid var(--grey)',
-        }}
-      >
-        {/* Left */}
-        <RevealWrapper>
-          <h2
+    <section
+      id="contact"
+      style={{
+        padding: '64px var(--pad)',
+      }}
+    >
+      <RevealWrapper>
+        <div style={{ maxWidth: '560px' }}>
+          <span
             style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(44px, 6vw, 88px)',
-              lineHeight: 0.9,
-              color: 'var(--white)',
+              display: 'block',
+              fontFamily: 'var(--font-body)',
+              fontSize: '10px',
+              letterSpacing: '3px',
+              textTransform: 'uppercase',
+              color: 'rgba(245,240,232,0.35)',
+              marginBottom: '16px',
             }}
           >
-            LET&apos;S BUILD{' '}
-            <br />
-            <span style={{ color: 'var(--orange)' }}>TOGETHER.</span>
-          </h2>
-        </RevealWrapper>
-
-        {/* Right */}
-        <RevealWrapper delay={0.15}>
+            Get In Touch
+          </span>
           <p
             style={{
               fontFamily: 'var(--font-body)',
@@ -53,129 +32,41 @@ export default function Contact() {
               fontWeight: 300,
               lineHeight: 1.8,
               color: 'rgba(245,240,232,0.55)',
-              marginBottom: '32px',
+              marginBottom: '24px',
             }}
           >
-            Whether you need a full brand built from scratch, a performance ad campaign launched,
-            or an AI-powered content system that runs itself — I&apos;m the person you call.
-            Based in Dubai. Working globally.
+            Happy to talk shop, compare notes, or answer a question about anything on this
+            site. Reach me here — no forms, no funnels.
           </p>
 
-          {/* Email */}
-          <div style={{ marginBottom: '24px' }}>
-            <span
-              style={{
-                display: 'block',
-                fontFamily: 'var(--font-body)',
-                fontSize: '9px',
-                fontWeight: 400,
-                letterSpacing: '2.5px',
-                textTransform: 'uppercase',
-                color: 'rgba(245,240,232,0.3)',
-                marginBottom: '8px',
-              }}
-            >
-              Email
-            </span>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
             <a
               href="mailto:ppranav18@gmail.com"
               style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(16px, 2vw, 22px)',
-                letterSpacing: '2px',
+                fontFamily: 'var(--font-body)',
+                fontSize: '13px',
                 color: 'var(--orange)',
                 textDecoration: 'none',
-                transition: 'color 0.2s',
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.color = 'var(--orange-dim)';
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.color = 'var(--orange)';
               }}
             >
               ppranav18@gmail.com
             </a>
-          </div>
-
-          {/* Phone */}
-          <div style={{ marginBottom: '36px' }}>
-            <span
-              style={{
-                display: 'block',
-                fontFamily: 'var(--font-body)',
-                fontSize: '9px',
-                fontWeight: 400,
-                letterSpacing: '2.5px',
-                textTransform: 'uppercase',
-                color: 'rgba(245,240,232,0.3)',
-                marginBottom: '8px',
-              }}
-            >
-              Phone / WhatsApp
-            </span>
-            <a
-              href="tel:+971567951808"
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: '16px',
-                fontWeight: 300,
-                letterSpacing: '1.5px',
-                color: 'rgba(245,240,232,0.65)',
-                textDecoration: 'none',
-              }}
-            >
-              +971 567 951 808
-            </a>
-          </div>
-
-          {/* Buttons */}
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <a href="mailto:ppranav18@gmail.com" className="btn btn-orange">
-              Email Me
-            </a>
-
-            <a
-              href="https://wa.me/971567951808"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn"
-              style={{
-                background: '#25d366',
-                color: '#fff',
-                fontFamily: 'var(--font-body)',
-                fontSize: '10px',
-                fontWeight: 500,
-                letterSpacing: '2.5px',
-                textTransform: 'uppercase',
-                textDecoration: 'none',
-                padding: '14px 30px',
-                display: 'inline-block',
-                transition: 'all 0.2s',
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.background = '#1dad55';
-                (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.background = '#25d366';
-                (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)';
-              }}
-            >
-              WhatsApp
-            </a>
-
             <a
               href="https://linkedin.com/in/pranavnairrr"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-outline"
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '13px',
+                color: 'rgba(245,240,232,0.5)',
+                textDecoration: 'none',
+              }}
             >
-              LinkedIn
+              LinkedIn ↗
             </a>
           </div>
-        </RevealWrapper>
-      </section>
-    </>
+        </div>
+      </RevealWrapper>
+    </section>
   );
 }

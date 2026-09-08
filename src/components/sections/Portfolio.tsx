@@ -1,6 +1,7 @@
 import { portfolioItems } from '@/lib/portfolio';
 import SectionLabel from '@/components/ui/SectionLabel';
 import RevealWrapper from '@/components/ui/RevealWrapper';
+import ScreenshotThumb from '@/components/ui/ScreenshotThumb';
 
 export default function Portfolio() {
   return (
@@ -10,6 +11,8 @@ export default function Portfolio() {
           position: relative;
           overflow: hidden;
           transition: background 0.25s;
+          display: flex;
+          flex-direction: column;
         }
         .port-card::before {
           content: '';
@@ -20,12 +23,27 @@ export default function Portfolio() {
           transform: scaleX(0);
           transform-origin: left;
           transition: transform 0.35s ease;
+          z-index: 1;
         }
         .port-card:hover::before {
           transform: scaleX(1);
         }
         .port-card:hover {
           background: #0d0d0d !important;
+        }
+        .port-thumb-wrap {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 16 / 9;
+          background: #111;
+          overflow: hidden;
+          border-bottom: 1px solid var(--grey);
+        }
+        .port-thumb-wrap img {
+          transition: transform 0.4s ease;
+        }
+        .port-card:hover .port-thumb-wrap img {
+          transform: scale(1.03);
         }
         .port-grid {
           display: grid;
@@ -55,7 +73,7 @@ export default function Portfolio() {
           </h2>
         </RevealWrapper>
 
-        {/* Authentic Note */}
+        {/* Note */}
         <RevealWrapper delay={0.1}>
           <div
             style={{
@@ -75,9 +93,7 @@ export default function Portfolio() {
                 maxWidth: '680px',
               }}
             >
-              Everything shown is real work, built for real clients, delivering real results.
-              No concept pieces. No spec work. Just the actual content, campaigns, and creative
-              that went live and moved the needle.
+              Shipped work — no concepts, no spec pieces.
             </p>
           </div>
         </RevealWrapper>
@@ -94,88 +110,75 @@ export default function Portfolio() {
                 className="port-card"
                 style={{
                   background: 'var(--black)',
-                  padding: 'clamp(32px, 4vw, 52px) clamp(24px, 3.5vw, 44px)',
                   textDecoration: 'none',
-                  display: 'block',
                 }}
               >
-                {/* Ghost Platform */}
-                <div
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: 'clamp(48px, 6vw, 80px)',
-                    color: 'rgba(245,240,232,0.03)',
-                    lineHeight: 1,
-                    marginBottom: '-16px',
-                    pointerEvents: 'none',
-                    userSelect: 'none',
-                  }}
-                >
-                  {item.platform}
+                <div className="port-thumb-wrap">
+                  <ScreenshotThumb url={item.href} alt={`${item.title.replace('\n', ' ')} — preview`} />
                 </div>
 
-                {/* Tag */}
-                <span
-                  style={{
-                    display: 'inline-block',
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '9px',
-                    fontWeight: 500,
-                    letterSpacing: '2.5px',
-                    textTransform: 'uppercase',
-                    color: 'var(--orange)',
-                    marginBottom: '18px',
-                    position: 'relative',
-                  }}
-                >
-                  {item.tag}
-                </span>
+                <div style={{ padding: 'clamp(28px, 3.5vw, 40px) clamp(24px, 3.5vw, 40px)' }}>
+                  {/* Tag */}
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '9px',
+                      fontWeight: 500,
+                      letterSpacing: '2.5px',
+                      textTransform: 'uppercase',
+                      color: 'var(--orange)',
+                      marginBottom: '14px',
+                    }}
+                  >
+                    {item.tag}
+                  </span>
 
-                {/* Title */}
-                <h3
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: 'clamp(32px, 4vw, 58px)',
-                    lineHeight: 0.92,
-                    color: 'var(--white)',
-                    marginBottom: '18px',
-                    whiteSpace: 'pre-line',
-                  }}
-                >
-                  {item.title}
-                </h3>
+                  {/* Title */}
+                  <h3
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: 'clamp(24px, 3vw, 36px)',
+                      lineHeight: 0.98,
+                      color: 'var(--white)',
+                      marginBottom: '14px',
+                      whiteSpace: 'pre-line',
+                    }}
+                  >
+                    {item.title}
+                  </h3>
 
-                {/* Desc */}
-                <p
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '13px',
-                    fontWeight: 300,
-                    lineHeight: 1.75,
-                    color: 'rgba(245,240,232,0.42)',
-                    marginBottom: '28px',
-                    maxWidth: '480px',
-                  }}
-                >
-                  {item.desc}
-                </p>
+                  {/* Desc */}
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '13px',
+                      fontWeight: 300,
+                      lineHeight: 1.75,
+                      color: 'rgba(245,240,232,0.42)',
+                      marginBottom: '22px',
+                    }}
+                  >
+                    {item.desc}
+                  </p>
 
-                {/* CTA */}
-                <span
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '10px',
-                    fontWeight: 500,
-                    letterSpacing: '2px',
-                    textTransform: 'uppercase',
-                    color: 'var(--orange)',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                  }}
-                >
-                  {item.cta} ↗
-                </span>
+                  {/* CTA */}
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '10px',
+                      fontWeight: 500,
+                      letterSpacing: '2px',
+                      textTransform: 'uppercase',
+                      color: 'var(--orange)',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                    }}
+                  >
+                    {item.cta} ↗
+                  </span>
+                </div>
               </a>
             ))}
           </div>

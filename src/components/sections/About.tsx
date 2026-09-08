@@ -3,7 +3,7 @@ import RevealWrapper from '@/components/ui/RevealWrapper';
 
 const stats = [
   { value: '8+', label: 'Years Experience' },
-  { value: '15+', label: 'Brands Built' },
+  { value: '5', label: 'Business Units' },
   { value: '4', label: 'Industries Served' },
 ];
 
@@ -130,11 +130,10 @@ export default function About() {
                 color: 'rgba(245,240,232,0.65)',
               }}
             >
-              I&apos;m a Dubai-based Head of Marketing with 8+ years of experience spanning growth
-              strategy, performance marketing, and hands-on product/tech ownership. Started in
-              branch marketing and growth roles, evolved into a strategist who builds the MarTech
-              that powers marketing — CRMs, websites, and high-converting landing pages — using
-              modern AI-assisted tools.
+              Dubai-based Head of Marketing. 8+ years across growth strategy, performance
+              marketing, and hands-on product/tech ownership. Started in branch marketing and
+              growth roles, then moved into building the MarTech that powers marketing — CRMs,
+              websites, high-converting landing pages — using modern AI-assisted tools.
             </p>
             <p
               style={{
@@ -145,7 +144,7 @@ export default function About() {
                 color: 'rgba(245,240,232,0.65)',
               }}
             >
-              I currently own full-funnel marketing strategy and execution across five business
+              Currently owns full-funnel marketing strategy and execution across five business
               units at Aries Group &amp; Macins Group — spanning healthcare, aesthetics, real estate,
               and construction — reporting directly to founders and leadership.
             </p>
@@ -158,9 +157,8 @@ export default function About() {
                 color: 'rgba(245,240,232,0.65)',
               }}
             >
-              I use AI tools to deliver what used to require a full team. Campaigns in days, not
-              weeks. I also build my own brands — Printadi, a clothing venture in India — so I
-              don&apos;t just advise brands, I build them.
+              Not a pitch for freelance work — this is a record of what&apos;s being learned along
+              the way: the systems, the campaigns, the tools. Documented and given away for free.
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '8px' }}>

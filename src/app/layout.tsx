@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { Bebas_Neue, DM_Sans, Instrument_Serif } from 'next/font/google';
 import './globals.css';
 import CustomCursor from '@/components/layout/CustomCursor';
-import FloatingWhatsApp from '@/components/layout/FloatingWhatsApp';
 import Nav from '@/components/layout/Nav';
 import Footer from '@/components/layout/Footer';
+import AnalyticsTracker from '@/components/layout/AnalyticsTracker';
 
 const bebasNeue = Bebas_Neue({
   weight: '400',
@@ -28,9 +28,9 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: 'Pranav Nair — Head of Marketing, AI-Powered Growth & Product Leader, Dubai',
+  title: 'Pranav Nair — Head of Marketing, Dubai',
   description:
-    'Dubai-based Head of Marketing and AI-powered growth & product leader. Pranav Nair helps healthcare and luxury brands grow through brand strategy, performance marketing, and AI-assisted product/tech ownership.',
+    'Notes on growth, product, and using AI to do more with less — written by Pranav Nair, Head of Marketing at Aries Group & Macins Group, Dubai.',
 };
 
 export default function RootLayout({
@@ -42,8 +42,12 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Pranav Nair',
-    jobTitle: 'Head of Marketing · AI-Powered Growth & Product Leader',
-    description: 'Dubai-based Head of Marketing and AI-powered growth & product leader helping healthcare and luxury brands grow through brand strategy, performance marketing, and AI-assisted product/tech ownership.',
+    jobTitle: 'Head of Marketing',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Aries Group & Macins Group',
+    },
+    description: 'Head of Marketing at Aries Group & Macins Group, Dubai. Writes about growth, product, and using AI to do more with less.',
     url: 'https://pranavnair.co',
     image: 'https://pranavnair.co/photo.png',
     email: 'ppranav18@gmail.com',
@@ -74,7 +78,7 @@ export default function RootLayout({
       </head>
       <body>
         <CustomCursor />
-        <FloatingWhatsApp />
+        <AnalyticsTracker />
         <Nav />
         {children}
         <Footer />
