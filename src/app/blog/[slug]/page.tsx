@@ -105,31 +105,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       {/* ── ARTICLE BODY ── */}
       <section style={{ padding: '72px var(--pad)', borderBottom: '1px solid var(--grey)', maxWidth: '760px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '56px', paddingBottom: '32px', borderBottom: '1px solid var(--grey)' }}>
-          <div
-            style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '50%',
-              background: 'var(--grey-mid)',
-              border: '1px solid var(--orange)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontFamily: 'var(--font-display)',
-              fontSize: '16px',
-              color: 'var(--orange)',
-              flexShrink: 0,
-            }}
-          >
-            PN
-          </div>
-          <div>
-            <div style={{ fontFamily: 'var(--font-body)', fontSize: '12px', fontWeight: 500, color: 'var(--white)' }}>Pranav Nair</div>
-            <div style={{ fontFamily: 'var(--font-body)', fontSize: '10px', letterSpacing: '1.5px', textTransform: 'uppercase', color: 'rgba(245,240,232,0.35)', marginTop: '2px' }}>
-              Head of Marketing · Dubai, UAE
-            </div>
-          </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '56px', paddingBottom: '32px', borderBottom: '1px solid var(--grey)' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.png" alt="Pranav Nair" style={{ width: '36px', height: '36px', objectFit: 'contain', flexShrink: 0 }} />
+          <div style={{ fontFamily: 'var(--font-body)', fontSize: '12px', fontWeight: 500, color: 'var(--white)' }}>Pranav Nair</div>
         </div>
 
         <div

@@ -71,11 +71,11 @@ export default async function NotesPage() {
               }}
             >
               <Image
-                src="/photo.png"
+                src="/logo.png"
                 alt="Pranav Nair"
                 width={40}
                 height={40}
-                style={{ borderRadius: '50%', objectFit: 'cover', flexShrink: 0, border: '1px solid var(--grey)' }}
+                style={{ objectFit: 'contain', flexShrink: 0 }}
               />
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
